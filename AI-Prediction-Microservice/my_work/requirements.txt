@@ -1,0 +1,10 @@
+Flask
+connexion[swagger-ui]
+joblib
+scikit-learn
+dill
+keras
+tensorflow
+matplotlib
+seaborn
+numpy

@@ -1,0 +1,120 @@
+openapi: 3.0.0
+info:
+  version: '0.1'
+  title: Predict from Upload
+  description: 'blah '
+servers:
+  - url: 'http://localhost:8080/e222'
+paths: 
+  /file/<filename>:
+    post:
+      tags:
+        - Upload
+      summary: Upload a file
+      operationId: src.file.upload
+      parameters:
+        - name: filename
+          in: query
+          description: filename to be uploaded
+          required: true
+          schema:
+            type: string
+      responses:
+        '405':
+          description: Invalid input
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+    get:
+      tags:
+        - Download
+      summary: Download a file
+      operationId: src.file.download
+      responses:
+        '405':
+          description: Invalid input
+  /hello:
+    get:
+      tags:
+        - hello 
+      operationId: src.hello.hello_world
+      description: Return hello world string
+      responses:
+        '200':
+          description: 'Success'
+   
+  /list:
+    get:
+      tags:
+        - List
+      operationId: src.file.list_files
+      description: Returns the list of files in the server
+      responses:
+        '200':
+          description: 'Success'
+
+
+  /explanation/<file_name>:
+    get:
+      tags:
+        - Explanation
+      operationId: src.explanation.model_explanation
+      description: Returns the prediction for a given set of inputs
+      parameters:
+        - name: file_name
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Success'
+
+
+ 
+  /predict/<file_name>:
+    get:
+      tags:
+        - PRED
+      operationId: src.prediction.my_predictionF
+      description: Returns the prediction for a given set of inputs
+      parameters:
+        - name: file_name
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Success'
+
+  /predict/{id}:
+    get:
+      tags:
+        - PRED
+      operationId: src.prediction.my_prediction
+      description: Returns the prediction for a given set of inputs
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: array
+            items:
+              type: number
+            minItems: 1
+          style: simple
+          explode: true
+        - in: query
+          name: metadata
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: 'Success'
