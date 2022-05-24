@@ -24,7 +24,7 @@ Projects=[['project1-phoenix-2019-01-28'],['ComplexWheelD3-12-Fumi-2019-01-28', 
 
 shuffle=1
 
-prefix='/home/alex/DLC-workshopRowland'
+prefix='/content/gdrive/MyDrive'
 
 for project in Projects[model]:
     projectpath=os.path.join(prefix,project)
@@ -60,4 +60,3 @@ for project in Projects[model]:
     print("DONE WITH ", project," resetting to original path")
     cfg['project_path']=previous_path
     deeplabcut.auxiliaryfunctions.write_config(config,cfg)
-    ```
