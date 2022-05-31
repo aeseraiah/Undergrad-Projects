@@ -21,9 +21,7 @@ if x != y:
 else: 
     print("x is equal to y")
 
-    a
-
-    sdfe
-
-qwdqwdq
-efwefwef
+if x < y or x > y:
+    print("x is not equal to y")
+else:
+    print("x is equal to y")
