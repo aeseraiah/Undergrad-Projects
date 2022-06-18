@@ -35,6 +35,6 @@ def main():
     func(num)
 
 main()
-    
+
 
 
