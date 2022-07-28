@@ -7,7 +7,7 @@ For this microservice, a classification of beans can be performed based on input
 - /predict: Upload a file that will be used to predict bean classes 
 - /explanation: Upload a file that will be used to produce the model's metrics 
 
-### Running the service
+### Running the service;
 
 1. In VM, navigate to the Lab 11/my_work directory
 2. Build the containerized service in VM.
