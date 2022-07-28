@@ -10,7 +10,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import StandardScaler
 
 #Reading in S&P 500, Ticker symbol = ^GSPC
-df = web.DataReader('^GSPC', 'yahoo', start='2020-10-20', end='2022-07-25')
+df = web.DataReader('AMZN', 'yahoo', start='2020-10-20', end='2022-07-25')
 
 df = df[['High', 'Low', 'Open', 'Close', 'Volume', 'Adj Close']]
 #print(df.head)
@@ -32,8 +32,12 @@ df.fillna(-99999, inplace=True)
 #.1 is representing 10%. We want to predict out 10% of our data
 #10% = % days worth of previous data to predict tomorrow?
 
-forecast_out = int(math.ceil(0.01*len(df)))
-#print(forecast_out)
+print(df.head)
+
+print(len(df))
+
+forecast_out = int(math.ceil(0.03*len(df)))
+print(forecast_out)
 
 df['label'] = df[forecast_col].shift(-forecast_out)
 
