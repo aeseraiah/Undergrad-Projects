@@ -1,43 +1,81 @@
 import csv
 import pandas as pd
 import matplotlib.pyplot as plt
+from pathlib import Path
 import numpy as np
 import os
 
+#NOTE: change nose_directory in for loop to rump_directory to make the other bar graph
+pull_path_nose_directory = "C:/Users/7teal/Coding Projects/Undergrad-Projects/DeepLabCut/DLC_jump_analysis/all_trackers/"
+nose_directory = "csv_files"
+rump_directory = "csv_rump_files"
+pull_path_rump_directory = "C:/Users/7teal/Coding Projects/Undergrad-Projects/DeepLabCut/DLC_jump_analysis/all_trackers/"
 
-def main(path):
+
+def main(full_path, relative_path):
     # for i in nose_csv_list:
     #     nose = pd.read_csv(i)
     #     nose_df = pd.DataFrame(nose)
     #     nose_values = nose_df.columns.values.astype(float)
-
-    nose_directory = "csv_files"
-    pull_path_nose_directory = "C:/Users/7teal/Coding Projects/Undergrad-Projects/DeepLabCut/DLC_jump_analysis/all_trackers/csv_files"
-    #NOTE: change nose_directory in for loop to rump_directory to make the other bar graph
-    rump_directory = "csv_rump_files"
-    pull_path_rump_directory = "C:/Users/7teal/Coding Projects/Undergrad-Projects/DeepLabCut/DLC_jump_analysis/all_trackers/csv_rump_files"
+    current_dir = os.getcwd()
+    os.chdir(current_dir + '/' + relative_path)
+    # arr = {}
+    # new_current_dir = os.getcwd()
     
-    # directory = 'C:/Users/7teal/Coding Projects/Undergrad-Projects/DeepLabCut/DLC_jump_analysis/all_trackers/'
+    for root, dirs, files in os.walk(".", topdown=False):
+        for name in files:
+            print(os.path.join(root, name))
+        file_count = len(files)
+    
+    print(file_count)
 
-    # for x in directory:
-    #     os.chdir(directory + '/' + nose_directory)
-    #     print(os.getcwd())
+    dataframes_list = []
 
-
-    #arr = []
-    for filename in os.listdir(nose_directory):
-        os.chdir(path)
-        print(os.getcwd())
-        # nose = pd.read_csv(filename)
-        # nose_df = pd.DataFrame(nose)
-        # nose_values = nose_df.columns.values.astype(float)
-        # print(nose_values)
-    #     for i in nose_values:
-    #         arr[i] = nose_values
-    # print(arr)
+    for i in range(file_count):
+        temp_df = pd.read_csv(files[i])
+        dataframes_list.append(temp_df)
+        
+    for dataset in dataframes_list:
+        print(dataset)
 
 
-main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # for filename in os.listdir(new_current_dir):
+    #     nose = pd.read_csv(filename)
+    #     nose_df = pd.DataFrame(nose)
+    #     nose_values = nose_df.columns.values.astype(float)
+        #print(type(nose_values))
+        #print(nose_values)
+        # arr[filename] = nose_values(filename)
+        # print(arr)
+        # for i in nose_values:
+        #      arr[i] = nose_values
+
+
+    #print(nose_values)
+
+
+main(pull_path_nose_directory, nose_directory)
 
 
 
