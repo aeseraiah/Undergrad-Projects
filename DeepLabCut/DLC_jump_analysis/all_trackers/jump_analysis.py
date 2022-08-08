@@ -11,88 +11,40 @@ nose_directory = "csv_files"
 rump_directory = "csv_rump_files"
 pull_path_rump_directory = "C:/Users/7teal/Coding Projects/Undergrad-Projects/DeepLabCut/DLC_jump_analysis/all_trackers/"
 
-
 def main(full_path, relative_path):
-    # for i in nose_csv_list:
-    #     nose = pd.read_csv(i)
-    #     nose_df = pd.DataFrame(nose)
-    #     nose_values = nose_df.columns.values.astype(float)
     current_dir = os.getcwd()
     os.chdir(current_dir + '/' + relative_path)
-    # arr = {}
-    # new_current_dir = os.getcwd()
+
     
     for root, dirs, files in os.walk(".", topdown=False):
         for name in files:
             print(os.path.join(root, name))
         file_count = len(files)
-    
-    print(file_count)
+
 
     dataframes_list = []
-
     for i in range(file_count):
         temp_df = pd.read_csv(files[i])
-        dataframes_list.append(temp_df)
+        nose_df1 = pd.DataFrame(temp_df)
+        nose_values1 = nose_df1.columns.values.astype(float)
+        dataframes_list.append(nose_values1)
+
         
-    for dataset in dataframes_list:
-        print(dataset)
+    #for dataset in dataframes_list:
+        #print(dataset)
+    
+    Ms21_df_values = dataframes_list[0]
+    print("Ms21 values:\n", Ms21_df_values)
+    Ms22_Rear5_df_values = dataframes_list[1]
+    print("Ms22_Rear5_df_values:\n", Ms22_Rear5_df_values)
+
+    Ms22_values = Ms22_Rear5_df_values[0:5]
+    print("Ms22_values:\n", Ms22_values)
+    Rear5_values = Ms22_Rear5_df_values[5:10]
+    print("Rear5_values:\n", Rear5_values)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # for filename in os.listdir(new_current_dir):
-    #     nose = pd.read_csv(filename)
-    #     nose_df = pd.DataFrame(nose)
-    #     nose_values = nose_df.columns.values.astype(float)
-        #print(type(nose_values))
-        #print(nose_values)
-        # arr[filename] = nose_values(filename)
-        # print(arr)
-        # for i in nose_values:
-        #      arr[i] = nose_values
-
-
-    #print(nose_values)
-
-
-main(pull_path_nose_directory, nose_directory)
-
-
-
-    # nose = pd.read_csv(single_tracker_nose_csv)
-    # nose_df = pd.DataFrame(nose)
-    # nose_values = nose_df.columns.values.astype(float)
-    # #print("nose_values:\n", nose_values)
-    # Ms22_values = nose_values[0:5]
-    # print("Ms22_values:\n", Ms22_values)
-    # Rear5_values = nose_values[5:10]
-    # print("Rear5_values:\n", Rear5_values)
-
-    # rump = pd.read_csv(single_tracker_rump_csv)
-    # rump_df = pd.DataFrame(rump)
-    # rump_values = rump_df.columns.values.astype(float)
-    # #print("rump_values:\n", rump_values)
-
+    
 
 
 
@@ -129,5 +81,4 @@ main(pull_path_nose_directory, nose_directory)
 
 
 
-
-#main(nose_file, rump_file)
+main(pull_path_rump_directory, rump_directory)
