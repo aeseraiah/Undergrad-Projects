@@ -87,8 +87,6 @@ def main(full_path, relative_path, fname):
     x = [1, 2, 3, 4, 5, 6] # x-coordinates of your bars
     colors = ['blue', 'red', 'green', 'orange', 'purple', 'black']    # corresponding colors
     y = Ms21_df_values, Ms21_new_df_values, Ms22_Rear5_df_values, Ms22_Rear5_new_df_values, combined_df_values, combined_new_df_values
-    #y = [Ms22_values,Rear5_values]
-    #y = [nose_values]
  
 
     fig, ax = plt.subplots()

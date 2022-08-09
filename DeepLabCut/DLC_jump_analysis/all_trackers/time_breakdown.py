@@ -4,9 +4,8 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 import numpy as np
 import os
-import time_breakdown
  
-def main():
+def time_details():
     w = .9 # bar width
     x = [1, 2, 3, 4, 5] # x-coordinates of your bars
     colors = ['blue', 'red', 'green', 'orange', 'purple']    # corresponding colors
@@ -18,16 +17,12 @@ def main():
 
     #(3.6 days x 24 hrs/day) / (6 hrs/day) = 14 days
 
-    time_breakdown.time_details()
-    b = y[4]
+    y = np.array([.07, 1, .07, 2.5, 3.6])
     one_animal_model = np.array([.07, 1, .07, 2.5, 3.6])
-    total_time_one_animal = one_animal_model[4]
-    two_animal_models = np.multiply(total_time_one_animal, 2)
-    print(two_animal_models)
-    three_animal_models = np.multiply(total_time_one_animal, 3)
-    four_animal_models = np.multiply(total_time_one_animal, 4)
-    five_animal_models = np.multiply(total_time_one_animal, 5)
-    y = one_animal_model, two_animal_models, three_animal_models, four_animal_models, five_animal_models
+    two_animal_models = np.multiply(y, 2)
+    three_animal_models = np.multiply(y, 3)
+    four_animal_models = np.multiply(y, 4)
+    five_animal_models = np.multiply(y, 5)
 
     fig, ax = plt.subplots()
     ax.bar(x,
@@ -67,4 +62,4 @@ def main():
     # os.chdir(current_dir + '/saved_figs')
     #plt.savefig(fname)
 
-main()
+time_details()
