@@ -4,8 +4,10 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 import numpy as np
 import os
+
+y = np.array([.07, 1, .07, 2.5, 3.6])
  
-def time_details():
+def time_details(fname):
     w = .9 # bar width
     x = [1, 2, 3, 4, 5] # x-coordinates of your bars
     colors = ['blue', 'red', 'green', 'orange', 'purple']    # corresponding colors
@@ -16,8 +18,6 @@ def time_details():
     #total time: 87.4 hrs --> 3.6 days
 
     #(3.6 days x 24 hrs/day) / (6 hrs/day) = 14 days
-
-    y = np.array([.07, 1, .07, 2.5, 3.6])
     one_animal_model = np.array([.07, 1, .07, 2.5, 3.6])
     two_animal_models = np.multiply(y, 2)
     three_animal_models = np.multiply(y, 3)
@@ -57,9 +57,13 @@ def time_details():
     plt.ylabel("time (days)")
     #plt.legend(['x = x'],bbox_to_anchor =(0.65, 1.25), loc='lower center')
     
-    # plt.show()
-    # current_dir = os.getcwd()
-    # os.chdir(current_dir + '/saved_figs')
-    #plt.savefig(fname)
 
-time_details()
+    current_dir = os.getcwd()
+    os.chdir(current_dir + '/saved_figs')
+    figure = plt.gcf()
+    figure.set_size_inches(10, 6)
+    plt.savefig(fname, dpi=100)
+    plt.show()
+
+
+time_details("time_steps.png")
