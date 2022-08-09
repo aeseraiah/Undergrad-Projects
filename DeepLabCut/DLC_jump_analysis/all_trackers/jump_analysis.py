@@ -36,41 +36,39 @@ def main(full_path, relative_path, fname):
 
     #Combined Model:
     combined_df_values = dataframes_list[0]
-    print("Ms21 values:\n", combined_df_values)
+    #print("Ms21 values:\n", combined_df_values)
 
     combined_df_values_Ms22 = combined_df_values[0:5]
-    print("combined_df_values_Ms22:\n", combined_df_values_Ms22)
+    #print("combined_df_values_Ms22:\n", combined_df_values_Ms22)
     combined_df_values_Rear5 = combined_df_values[5:10]
-    print("combined_df_values_Rear5:\n", combined_df_values_Rear5) 
+    #print("combined_df_values_Rear5:\n", combined_df_values_Rear5) 
 
 
     combined_new_df_values = dataframes_list[1]
     
     #Ms21 Model:
     Ms21_df_values = dataframes_list[2]
-    print("Ms21 values:\n", Ms21_df_values)
+    #print("Ms21 values:\n", Ms21_df_values)
 
     Ms21_values_Ms22 = Ms21_df_values[0:5]
-    print("Ms21_values_Ms22:\n", Ms21_values_Ms22)
+    #print("Ms21_values_Ms22:\n", Ms21_values_Ms22)
     Ms21_values_Rear5 = Ms21_df_values[5:10]
-    print("Ms21_values_Rear5:\n", Ms21_values_Rear5)
+    #print("Ms21_values_Rear5:\n", Ms21_values_Rear5)
 
     Ms21_new_df_values = dataframes_list[3]
 
 
     #Single Models:
     Ms22_Rear5_df_values = dataframes_list[4]
-    print("Ms22_Rear5_df_values:\n", Ms22_Rear5_df_values)
+    #print("Ms22_Rear5_df_values:\n", Ms22_Rear5_df_values)
 
     Ms22_values = Ms22_Rear5_df_values[0:5]
-    print("Ms22_values_Ms22:\n", Ms22_values)
+    #print("Ms22_values_Ms22:\n", Ms22_values)
     Rear5_values = Ms22_Rear5_df_values[5:10]
-    print("Rear5_values_Rear5:\n", Rear5_values)
+    #print("Rear5_values_Rear5:\n", Rear5_values)
 
     Ms22_Rear5_new_df_values = dataframes_list[5]
-
-
-
+    print(current_dir)
 
     #RC1 Model:
     # RC1_df_values = dataframes_list[3]
@@ -128,7 +126,8 @@ def main(full_path, relative_path, fname):
     #plt.legend(['x = x'],bbox_to_anchor =(0.65, 1.25), loc='lower center')
     
     plt.show()
+    os.chdir(current_dir + '/saved_figs')
     plt.savefig(fname)
 
 
-main(pull_path_rump_directory, rump_directory, "rump_results")
+main(pull_path_nose_directory, rump_directory, "rump_results.png")
