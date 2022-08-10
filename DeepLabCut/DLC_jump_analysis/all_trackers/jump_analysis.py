@@ -5,9 +5,12 @@ from pathlib import Path
 import numpy as np
 import os
 
+
+
 full_path_directory = "C:/Users/7teal/Coding Projects/Undergrad-Projects/DeepLabCut/DLC_jump_analysis/all_trackers/"
 nose_directory = "csv_files"
 rump_directory = "csv_rump_files"
+
 
 def main(full_path, relative_path, fname):
     current_dir = os.getcwd()
@@ -29,7 +32,9 @@ def main(full_path, relative_path, fname):
 
     combined_new_df_values = dataframes_list[1]
     Ms21_new_df_values = dataframes_list[3]
-    Ms22_Rear5_new_df_values = dataframes_list[5]
+    #Order of single trackers: Ms22, RC1, Rear5
+    Ms22_RC1_Rear5_new_df_values = dataframes_list[5]
+    print(Ms22_RC1_Rear5_new_df_values)
     #RC1_df_values = dataframes_list[3]
     #AVG THE VALUES FROM 4 RATS
   
@@ -38,7 +43,7 @@ def main(full_path, relative_path, fname):
     x = [1, 2, 3] # x-coordinates of your bars
     colors = ['blue', 'red', 'green']  # corresponding colors
     #y = Ms21_df_values, Ms21_new_df_values, Ms22_Rear5_df_values, Ms22_Rear5_new_df_values, combined_df_values, combined_new_df_values
-    y = Ms22_Rear5_new_df_values, Ms21_new_df_values, combined_new_df_values
+    y = Ms22_RC1_Rear5_new_df_values, Ms21_new_df_values, combined_new_df_values
 
     fig, ax = plt.subplots()
     ax.bar(x,
