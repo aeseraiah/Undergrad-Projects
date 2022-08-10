@@ -1,5 +1,4 @@
 import csv
-from this import d
 import pandas as pd
 import matplotlib.pyplot as plt
 from pathlib import Path
@@ -36,10 +35,10 @@ def main(full_path, relative_path, fname):
   
 
     w = .9 # bar width
-    x = [1, 2, 3, 4, 5, 6] # x-coordinates of your bars
-    colors = ['blue', 'red', 'green']    # corresponding colors
+    x = [1, 2, 3] # x-coordinates of your bars
+    colors = ['blue', 'red', 'green']  # corresponding colors
     #y = Ms21_df_values, Ms21_new_df_values, Ms22_Rear5_df_values, Ms22_Rear5_new_df_values, combined_df_values, combined_new_df_values
-    y = Ms21_new_df_values, Ms22_Rear5_new_df_values, combined_new_df_values
+    y = Ms22_Rear5_new_df_values, Ms21_new_df_values, combined_new_df_values
 
     fig, ax = plt.subplots()
     ax.bar(x,
@@ -47,7 +46,7 @@ def main(full_path, relative_path, fname):
            yerr=[np.std(yi) for yi in y],    # error bars
            capsize=12, # error bar cap width in points
            width=w,    # bar width
-           tick_label=["Ms21", "new_Ms21", "Rear5/Ms22", "Rear5/Ms22_new", "combined", "combined_new"],#,"Combined", "RC1"],
+           tick_label=["Rear5/Ms22", "Ms21", "combined"],#"RC1"],
            color=(0,0,0,0),  # face color transparent
            edgecolor=colors,
          #ecolor=colors,    # error bar colors; setting this raises an error for whatever reason.
@@ -81,4 +80,4 @@ def main(full_path, relative_path, fname):
     plt.show()
 
 
-main(full_path_directory, rump_directory, "rump_results.png")
+main(full_path_directory, nose_directory, "nose_results.png")
