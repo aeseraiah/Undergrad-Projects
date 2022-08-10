@@ -30,12 +30,12 @@ def main(full_path, relative_path, fname):
         nose_values1 = nose_df1.columns.values.astype(float)
         dataframes_list.append(nose_values1)
 
-    combined_new_df_values = dataframes_list[1]
-    Ms21_new_df_values = dataframes_list[3]
+    combined_new_df_values = dataframes_list[0]
+    Ms21_new_df_values = dataframes_list[1]
     #Order of single trackers: Ms22, RC1, Rear5
-    Ms22_RC1_Rear5_new_df_values = dataframes_list[5]
+    Ms22_RC1_Rear5_new_df_values = dataframes_list[2]
     print(Ms22_RC1_Rear5_new_df_values)
-    #RC1_df_values = dataframes_list[3]
+    #RC1_new_df_values = dataframes_list[3]
     #AVG THE VALUES FROM 4 RATS
   
 
@@ -62,7 +62,7 @@ def main(full_path, relative_path, fname):
         a = y[i]
         ax.scatter(x[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors[i], marker='.')
         ax.scatter(x[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors[i], marker = "s")
-
+        ax.scatter(x[i] + np.random.random(a[5:10].size) * w - w / 2, a[10:15], color=colors[i], marker = "t")
 
     # box = ax.get_position()
     # ax.set_position([box.x0, box.y0 + box.height * 0.1,
