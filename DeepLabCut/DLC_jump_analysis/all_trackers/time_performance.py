@@ -84,6 +84,9 @@ def time_per(fname):
     figure.set_size_inches(10, 6)
     plt.savefig(fname, dpi=100)
     plt.show()
+
+
+
     # current_dir = os.getcwd()
     # os.chdir(current_dir + '/saved_figs')
     #plt.savefig(fname)

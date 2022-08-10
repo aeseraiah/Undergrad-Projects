@@ -66,4 +66,4 @@ def time_details(fname):
     plt.show()
 
 
-time_details("time_steps.png")
+#time_details("time_steps.png")
