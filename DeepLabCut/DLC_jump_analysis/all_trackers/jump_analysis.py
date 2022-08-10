@@ -63,6 +63,7 @@ def main(full_path, relative_path, fname):
         ax.scatter(x[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors[i], marker='.')
         ax.scatter(x[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors[i], marker = "s")
         ax.scatter(x[i] + np.random.random(a[5:10].size) * w - w / 2, a[10:15], color=colors[i], marker = "t")
+        ax.scatter(x[i] + np.random.random(a[5:10].size) * w - w / 2, a[15:20], color=colors[i], marker = "|")
 
     # box = ax.get_position()
     # ax.set_position([box.x0, box.y0 + box.height * 0.1,
