@@ -30,8 +30,9 @@ def main(full_path, relative_path, fname):
 
     combined_new_df_values = dataframes_list[0]
     Ms21_new_df_values = dataframes_list[1]
+    Rear1_new_df_values = dataframes_list[2]
+    single_trackers_df = dataframes_list[3]
     #Order of single trackers: Ms21, Ms22, RC1, Rear5
-    single_trackers_df = dataframes_list[2]
     #RC1_new_df_values = dataframes_list[3]
     #AVG THE VALUES FROM 4 RATS
   
@@ -42,7 +43,7 @@ def main(full_path, relative_path, fname):
     #colors = ['blue', 'red', 'green']  # corresponding colors
     colors = ['red','blue']
     #y = Ms22_RC1_Rear5_new_df_values, Ms21_new_df_values, combined_new_df_values
-    y = single_trackers_df, combined_new_df_values
+    y = Ms21_new_df_values, Rear1_new_df_values
 
     fig, ax = plt.subplots()
     ax.bar(x,
@@ -51,7 +52,7 @@ def main(full_path, relative_path, fname):
            capsize=12, # error bar cap width in points
            width=w,    # bar width
            #tick_label=["Rear5/Ms22", "Ms21", "combined"],#"RC1"],
-           tick_label=['single trackers', 'combined tracker'],
+           tick_label=['Ms21 tracker', 'Rear1 tracker'],
            color=(0,0,0,0),  # face color transparent
            edgecolor=['black'],
          #ecolor=colors,    # error bar colors; setting this raises an error for whatever reason.
@@ -61,10 +62,10 @@ def main(full_path, relative_path, fname):
         #distribute scatter randomly across whole width of bar
         a = y[i]
         #print(y)
-        ax.scatter(x[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors[0], marker='.') #circle marker = Ms21
-        ax.scatter(x[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors[1], marker = "s") #square marker = Ms22
-        ax.scatter(x[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors[0], marker = "*") #star marker = RC1
-        ax.scatter(x[i] + np.random.random(a[15:20].size) * w - w / 2, a[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
+        ax.scatter(x[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors[i], marker='.') #circle marker = Ms21
+        ax.scatter(x[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors[i], marker = "s") #square marker = Ms22
+        ax.scatter(x[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors[i], marker = "*") #star marker = RC1
+        ax.scatter(x[i] + np.random.random(a[15:20].size) * w - w / 2, a[15:20], color=colors[i], marker = "^") #triangle marker = Rear5
 
     box = ax.get_position()
     ax.set_position([box.x0, box.y0 + box.height * 0.1,
