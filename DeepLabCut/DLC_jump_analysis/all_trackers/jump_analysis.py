@@ -40,7 +40,7 @@ def main(full_path, relative_path, fname):
     #x = [1, 2, 3] # x-coordinates of your bars
     x = [1, 2]
     #colors = ['blue', 'red', 'green']  # corresponding colors
-    colors = ['red','green']
+    colors = ['red','blue']
     #y = Ms22_RC1_Rear5_new_df_values, Ms21_new_df_values, combined_new_df_values
     y = single_trackers_df, combined_new_df_values
 
@@ -53,26 +53,26 @@ def main(full_path, relative_path, fname):
            #tick_label=["Rear5/Ms22", "Ms21", "combined"],#"RC1"],
            tick_label=['single trackers', 'combined tracker'],
            color=(0,0,0,0),  # face color transparent
-           edgecolor=colors,
+           edgecolor=['black'],
          #ecolor=colors,    # error bar colors; setting this raises an error for whatever reason.
          )
 
     for i in range(len(x)):
         #distribute scatter randomly across whole width of bar
         a = y[i]
-        print(y)
-        ax.scatter(x[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors[i], marker='.') #circle marker = Ms21
-        ax.scatter(x[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors[i], marker = "s") #square marker = Ms22
-        ax.scatter(x[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors[i], marker = "*") #star marker = RC1
-        ax.scatter(x[i] + np.random.random(a[15:20].size) * w - w / 2, a[15:20], color=colors[i], marker = "^") #triangle marker = Rear5
+        #print(y)
+        ax.scatter(x[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors[0], marker='.') #circle marker = Ms21
+        ax.scatter(x[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors[1], marker = "s") #square marker = Ms22
+        ax.scatter(x[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors[0], marker = "*") #star marker = RC1
+        ax.scatter(x[i] + np.random.random(a[15:20].size) * w - w / 2, a[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
 
-    # box = ax.get_position()
-    # ax.set_position([box.x0, box.y0 + box.height * 0.1,
-    #                 box.width, box.height * 0.9])
+    box = ax.get_position()
+    ax.set_position([box.x0, box.y0 + box.height * 0.1,
+                     box.width, box.height * 0.9])
 
     # # Put a legend below current axis
-    # ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05),
-    #         fancybox=True, shadow=True, ncol=5)
+    ax.legend(loc='upper center', labels = ['r: females', 'b: males'], bbox_to_anchor=(0.5, -0.15),
+            fancybox=False, shadow=True, ncol=5)
 
     
     plt.title("Performance of Animal Models")
