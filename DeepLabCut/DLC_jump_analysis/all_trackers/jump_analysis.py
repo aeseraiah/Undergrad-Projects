@@ -33,15 +33,19 @@ def main(full_path, relative_path, fname):
     #Ms22_new_df_values = dataframes_list[1]
     #RC1_new_df_values = dataframes_list[2]
     #Rear5_new_df_values = dataframes_list[3]
-    single_trackers_df = dataframes_list[2]
+    single_trackers_df = dataframes_list[1]
     #Order of single trackers: Ms22, RC1, Rear5
 
+    #arr = [Ms22_new_df_values, RC1_new_df_values, Rear5_new_df_values]
+    #arr = [single_trackers_df, combined_new_df_values]
+    #print(arr)
     #AVG THE VALUES FROM 3 SINGLE TRACKERS
     #avg_new_df_values = 
   
 
     w = .9 # bar width
     x = [1, 2]
+    #x = [1, 2, 3]
     colors = ['red','blue']
     #y = Ms22_new_df_values, RC1_new_df_values, Rear5_new_df_values
     #y = single_trackers_df, combined_new_df_values, avg_new_df_values
@@ -59,6 +63,11 @@ def main(full_path, relative_path, fname):
            edgecolor=['black'],
          #ecolor=colors,    # error bar colors; setting this raises an error for whatever reason.
          )
+    
+    avg_per_tracker =[np.mean(yi) for yi in y]
+    print(avg_per_tracker)
+    avg_all_trackers = np.mean(avg_per_tracker)
+    print(avg_all_trackers)
 
 
     for i in range(len(x)):
@@ -92,16 +101,16 @@ def main(full_path, relative_path, fname):
     #female  = mlines.Line2D([], [], marker='hello', linestyle='None', label='female')
 
     #ax.legend(handles=[Ms22, RC1, Rear5, Rear1, plt.Rectangle((0,0),1,1, color='red'), plt.Rectangle((0,0),1,1, color='blue')])
-    legend = ax.legend(handles=[Ms22, RC1, Rear5, Rear1], (handletextpad=-2.0, handlelength=0))
+    #legend = ax.legend(handles=[Ms22, RC1, Rear5, Rear1], (handletextpad=-2.0, handlelength=0))
 
     # ax.annotate('R: female',xy=(15, -35), xycoords='axes points',
     #         size=10, ha='center', va='bottom',
     #         bbox=dict(boxstyle='square', fc='w'))
 
-    color_l = ['red', 'blue']
-    for n, text in enumerate(legend.get_texts):
-        print( n, text)
-        text.set_color( color_l[n] )
+    # color_l = ['red', 'blue']
+    # for n, text in enumerate(legend.get_texts):
+    #     print( n, text)
+    #     text.set_color( color_l[n] )
 
     plt.title("Performance of Animal Models")
     plt.xlabel("Animal Model")
