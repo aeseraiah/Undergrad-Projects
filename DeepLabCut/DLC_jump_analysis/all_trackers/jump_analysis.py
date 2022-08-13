@@ -11,7 +11,7 @@ nose_directory = "csv_nose_files"
 rump_directory = "csv_rump_files"
 
 
-def main(full_path, relative_path, fname1, fname2):
+def main(full_path, relative_path, fname1, fname2):#, fname2):
     current_dir = os.getcwd()
     os.chdir(current_dir + '/' + relative_path)
 
@@ -29,26 +29,33 @@ def main(full_path, relative_path, fname1, fname2):
         nose_values1 = nose_df1.columns.values.astype(float)
         dataframes_list.append(nose_values1)
 
-    combined_new_df_values = dataframes_list[0]
-    #Ms22_new_df_values = dataframes_list[1]
-    #RC1_new_df_values = dataframes_list[2]
-    #Rear5_new_df_values = dataframes_list[3]
-    single_trackers_df = dataframes_list[1]
+    combined_values = dataframes_list[0]
+    print(combined_values)
+    combined_values_wo_Rear5 = combined_values[0:10]
+    print(combined_values_wo_Rear5)
+    Ms22_values = dataframes_list[1]
+    RC1_values = dataframes_list[2]
+    Rear5_values = dataframes_list[3]
+    single_values = dataframes_list[4]
     #Order of single trackers: Ms22, RC1, Rear5
 
-    #AVG THE VALUES FROM 3 SINGLE TRACKERS
+ 
 
   
 
     w = .9 # bar width
-    x = [1, 2]
-    colors = ['red','blue']
+    x1 = [1, 2]
+    x2 = [1, 2, 3]
+    colors1 = ['red','blue']
+    colors2 = ['red','blue', 'green']
     #y = Ms22_new_df_values, RC1_new_df_values, Rear5_new_df_values
     #y = single_trackers_df, combined_new_df_values, avg_new_df_values
-    y1 = single_trackers_df, combined_new_df_values
-    y2 = single_trackers_df, combined_new_df_values #change this to y2 = single_trackers_df, combined_new_df_values, avg_new_df_values
+    y1 = single_values, combined_values_wo_Rear5
+    y2 = Ms22_values, RC1_values, Rear5_values
+    #y3 = single_trackers_df, combined_new_df_values, avg_new_df_values
 
 
+    #AVG THE VALUES FROM 3 SINGLE TRACKERS
     avg_per_tracker =[np.mean(yi) for yi in y2]
     print(avg_per_tracker)
     avg_all_trackers = np.mean(avg_per_tracker)
@@ -56,9 +63,9 @@ def main(full_path, relative_path, fname1, fname2):
 
 
     figure1 = plt.figure(1)
-    plt.bar(x,
-           height=[np.mean(yi) for yi in y],
-           yerr=[np.std(yi) for yi in y],    # error bars
+    plt.bar(x1,
+           height=[np.mean(yi) for yi in y1],
+           yerr=[np.std(yi) for yi in y1],    # error bars
            capsize=12, # error bar cap width in points
            width=w,    # bar width
            #tick_label=["Rear5/Ms22", "Ms22", "combined"],#"RC1"],
@@ -67,20 +74,6 @@ def main(full_path, relative_path, fname1, fname2):
            edgecolor=['black'],
          #ecolor=colors,    # error bar colors; setting this raises an error for whatever reason.
          )
-
-    figure2 = plt.figure(2)
-    plt.bar(x,
-           height=[np.mean(yi) for yi in y],
-           yerr=[np.std(yi) for yi in y],    # error bars
-           capsize=12, # error bar cap width in points
-           width=w,    # bar width
-           #tick_label=["Rear5/Ms22", "Ms22", "combined"],#"RC1"],
-           tick_label=['single trackers', 'combined tracker'],
-           color=(0,0,0,0),  # face color transparent
-           edgecolor=['black'],
-         #ecolor=colors,    # error bar colors; setting this raises an error for whatever reason.
-         )
-    
 
 
 
@@ -99,17 +92,54 @@ def main(full_path, relative_path, fname1, fname2):
     
 
 
-    # # for i in range(len(x)):
-    # #     #distribute scatter randomly across whole width of bar
-    # #     a = y[i]
-    # #     #print(y)
-    # #     ax.scatter(x[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors[1], marker='.') #circle marker = Ms22
-    # #     ax.scatter(x[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors[0], marker = "s") #square marker = RC1
-    # #     ax.scatter(x[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors[0], marker = "*") #star marker = Rear5
+    for i in range(len(x1)):
+        #distribute scatter randomly across whole width of bar
+        a = y1[i]
+        #print(y)
+        plt.scatter(x1[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors1[1], marker='.') #circle marker = Ms22
+        plt.scatter(x1[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors1[0], marker = "s") #square marker = RC1
+        #plt.scatter(x1[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors1[0], marker = "*") #star marker = Rear5
 
-    # # box = ax.get_position()
-    # # ax.set_position([box.x0, box.y0 + box.height * 0.1,
-    # #                  box.width, box.height * 0.9])
+    
+    os.chdir(current_dir + '/saved_figs')
+    plt.savefig(fname1, dpi=100)
+    plt.show()
+    plt.close()
+
+
+
+    figure2 = plt.figure(2)
+    plt.bar(x2,
+           height=[np.mean(yi) for yi in y2],
+           yerr=[np.std(yi) for yi in y2],    # error bars
+           capsize=12, # error bar cap width in points
+           width=w,    # bar width
+           #tick_label=["Rear5/Ms22", "Ms22", "combined"],#"RC1"],
+           tick_label=['Ms22', 'RC1', 'Rear5'],
+           color=(0,0,0,0),  # face color transparent
+           edgecolor=['black'],
+         #ecolor=colors,    # error bar colors; setting this raises an error for whatever reason.
+         )
+    
+
+    for i in range(len(x2)):
+        #distribute scatter randomly across whole width of bar
+        b = y2[i]
+        #print(y)
+        plt.scatter(x2[i] + np.random.random(b[0:5].size) * w - w / 2, b[0:5], color=colors2[1], marker='.') #circle marker = Ms22
+        plt.scatter(x2[i] + np.random.random(b[5:10].size) * w - w / 2, b[5:10], color=colors2[0], marker = "s") #square marker = RC1
+
+  
+    plt.savefig(fname2, dpi=100)
+    plt.show()
+    plt.close()
+
+    
+    
+    
+    #box = plt.get_position()
+    #plt.set_position([box.x0, box.y0 + box.height * 0.1,
+    #                 box.width, box.height * 0.9])
     
 
     # # # Put a legend below current axis
@@ -168,16 +198,17 @@ def main(full_path, relative_path, fname1, fname2):
     #      #ecolor=colors,    # error bar colors; setting this raises an error for whatever reason.
     #      )
 
-    os.chdir(current_dir + '/saved_figs')
-    f = plt.figure(1)
-    plt.plot([1,2],[2,3])
-    plt.savefig(fname1, dpi=100)
-    plt.show()
+    # os.chdir(current_dir + '/saved_figs')
+    # # f = plt.figure(1)
+    # # plt.plot([1,2],[2,3])
+    # plt.savefig(fname1, dpi=100)
+    # #plt.savefig(fname2, dpi=100)
+    # plt.show()
 
-    g = plt.figure(2)
-    plt.plot([2,7,3],[5,1,9])
-    plt.savefig(fname2, dpi=100)
-    plt.show()
+    # g = plt.figure(2)
+    # plt.plot([2,7,3],[5,1,9])
+    # plt.savefig(fname2, dpi=100)
+    # plt.show()
 
 
-main(full_path_directory, nose_directory, "nose_results_1.png", "nose_results_2.png")
+main(full_path_directory, nose_directory, "nose_results_1.png", "nose_results_2.png")#, "nose_results_2.png")
