@@ -7,7 +7,7 @@ import numpy as np
 import os
 
 full_path_directory = "C:/Users/7teal/Coding Projects/Undergrad-Projects/DeepLabCut/DLC_jump_analysis/all_trackers/"
-nose_directory = "csv_files"
+nose_directory = "csv_nose_files"
 rump_directory = "csv_rump_files"
 
 
