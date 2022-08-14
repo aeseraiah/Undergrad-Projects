@@ -48,6 +48,7 @@ def main(full_path, relative_path, fname1, fname2):
     w = .9 # bar width
     x1 = [1]
     x2 = [1, 2, 3, 4, 5, 6]
+    x3 = [1, 2, 3]
     colors1 = ['red','blue']
     colors2 = ['red','blue', 'green', 'purple', 'orange', 'brown']
     y1 = single_values, combined_values_wo_Rear5
@@ -57,28 +58,28 @@ def main(full_path, relative_path, fname1, fname2):
     #y5 = single_trackers_df, combined_new_df_values, avg_new_df_values
 
     #AVG THE VALUES FROM 3 SINGLE TRACKERS
-    avg_per_tracker =[np.mean(yi) for yi in y2]
-    print(avg_per_tracker)
-    avg_all_trackers = np.mean(avg_per_tracker)
-    std_dev_all_trackers = np.std(avg_per_tracker)
-    print(avg_all_trackers)
+    # avg_per_tracker =[np.mean(yi) for yi in y2]
+    # print(avg_per_tracker)
+    # avg_all_trackers = np.mean(avg_per_tracker)
+    # std_dev_all_trackers = np.std(avg_per_tracker)
+    # print(avg_all_trackers)
 
-    y4 = avg_all_trackers
+    # y4 = avg_all_trackers
     
 
     figure1 = plt.figure(1)
-    plt.bar(x2,
+    plt.bar(x3,
            height=[np.mean(yi) for yi in y4],
            yerr=[np.std(yi) for yi in y4],    # error bars
            capsize=12, # error bar cap width in points
            width=w,    # bar width
-           tick_label=['Ms22', 'RC1', 'Rear5', 'single', 'combined', 'combined_wo_Rear5'],
+           tick_label=['combined', 'Ms21', 'single'],
            color=(0,0,0,0),  # face color transparent
            edgecolor=['black'],
          )
 
-    exact_values=[np.mean(yi) for yi in y3]
-    print(exact_values)
+    # exact_values=[np.mean(yi) for yi in y3]
+    # print(exact_values)
 
 
 
@@ -91,7 +92,9 @@ def main(full_path, relative_path, fname1, fname2):
         plt.scatter(x1[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors2[0], marker = "s") #square marker = RC1
         #plt.scatter(x1[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors1[0], marker = "*") #star marker = Rear5
 
-    
+    plt.savefig(fname1, dpi=100)
+    plt.show()
+    plt.close()
 
 
     # figure2 = plt.figure(2)
