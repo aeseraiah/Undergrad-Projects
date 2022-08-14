@@ -7,10 +7,10 @@ import numpy as np
 import os
 
 full_path_directory = "C:/Users/7teal/Coding Projects/Undergrad-Projects/DeepLabCut/DLC_jump_analysis/all_trackers/"
-temp_full_path_directory = "C:/Users/7teal/Coding Projects/Undergrad-Projects/DeepLabCut/DLC_jump_analysis/all_trackers/"
+org_nose_directory = "org_csv_nose_files"
+org_rump_directory = "org_csv_rump_files"
 nose_directory = "csv_nose_files"
 rump_directory = "csv_rump_files"
-temp_nose_dir = "csv_files"
 
 
 def main(full_path, relative_path, fname1, fname2):
@@ -51,7 +51,7 @@ def main(full_path, relative_path, fname1, fname2):
     colors1 = ['red','blue']
     colors2 = ['red','blue', 'green', 'purple', 'orange', 'brown']
     y1 = single_values, combined_values_wo_Rear5
-    #y2 = Ms22_values, RC1_values, Rear5_values
+    #y2 = Ms22_values, RC1_valuecds, Rear5_values
     #y3 = Ms22_values, RC1_values, Rear5_values, single_values, combined_values, combined_values_wo_Rear5
     y4 = combined_values, Ms21_values, single_values
     #y5 = single_trackers_df, combined_new_df_values, avg_new_df_values
@@ -195,4 +195,4 @@ def main(full_path, relative_path, fname1, fname2):
     # plt.show()
 
 
-main(temp_full_path_directory, temp_nose_dir , "nose_results_1.png", "nose_results_2.png")#, "nose_results_2.png")
+main(full_path_directory, nose_directory , "nose_results_1.png", "nose_results_2.png")#, "nose_results_2.png")
