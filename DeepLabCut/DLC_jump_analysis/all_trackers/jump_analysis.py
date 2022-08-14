@@ -11,7 +11,7 @@ nose_directory = "csv_nose_files"
 rump_directory = "csv_rump_files"
 
 
-def main(full_path, relative_path, fname1, fname2):#, fname2):
+def main(full_path, relative_path, fname1, fname2):
     current_dir = os.getcwd()
     os.chdir(current_dir + '/' + relative_path)
 
@@ -45,14 +45,13 @@ def main(full_path, relative_path, fname1, fname2):#, fname2):
 
     w = .9 # bar width
     x1 = [1, 2]
-    x2 = [1, 2, 3]
+    x2 = [1, 2, 3, 4, 5, 6]
     colors1 = ['red','blue']
-    colors2 = ['red','blue', 'green']
-    #y = Ms22_new_df_values, RC1_new_df_values, Rear5_new_df_values
-    #y = single_trackers_df, combined_new_df_values, avg_new_df_values
+    colors2 = ['red','blue', 'green', 'purple', 'orange', 'brown']
     y1 = single_values, combined_values_wo_Rear5
     y2 = Ms22_values, RC1_values, Rear5_values
-    #y3 = single_trackers_df, combined_new_df_values, avg_new_df_values
+    y3 = Ms22_values, RC1_values, Rear5_values, single_values, combined_values, combined_values_wo_Rear5
+    #y4 = single_trackers_df, combined_new_df_values, avg_new_df_values
 
 
     #AVG THE VALUES FROM 3 SINGLE TRACKERS
@@ -63,41 +62,24 @@ def main(full_path, relative_path, fname1, fname2):#, fname2):
 
 
     figure1 = plt.figure(1)
-    plt.bar(x1,
-           height=[np.mean(yi) for yi in y1],
-           yerr=[np.std(yi) for yi in y1],    # error bars
+    plt.bar(x2,
+           height=[np.mean(yi) for yi in y3],
+           yerr=[np.std(yi) for yi in y3],    # error bars
            capsize=12, # error bar cap width in points
            width=w,    # bar width
-           #tick_label=["Rear5/Ms22", "Ms22", "combined"],#"RC1"],
-           tick_label=['single trackers', 'combined tracker'],
+           tick_label=['Ms22', 'RC1', 'Rear5', 'single', 'combined', 'combined_wo_Rear5'],
            color=(0,0,0,0),  # face color transparent
            edgecolor=['black'],
-         #ecolor=colors,    # error bar colors; setting this raises an error for whatever reason.
          )
 
-
-
-    # fig, ax = plt.subplots()
-    # ax.bar(x,
-    #        height=[np.mean(yi) for yi in y],
-    #        yerr=[np.std(yi) for yi in y],    # error bars
-    #        capsize=12, # error bar cap width in points
-    #        width=w,    # bar width
-    #        #tick_label=["Rear5/Ms22", "Ms22", "combined"],#"RC1"],
-    #        tick_label=['single trackers', 'combined tracker'],
-    #        color=(0,0,0,0),  # face color transparent
-    #        edgecolor=['black'],
-    #      #ecolor=colors,    # error bar colors; setting this raises an error for whatever reason.
-    #      )
-    
 
 
     for i in range(len(x1)):
         #distribute scatter randomly across whole width of bar
         a = y1[i]
         #print(y)
-        plt.scatter(x1[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors1[1], marker='.') #circle marker = Ms22
-        plt.scatter(x1[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors1[0], marker = "s") #square marker = RC1
+        plt.scatter(x1[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors2[1], marker='.') #circle marker = Ms22
+        plt.scatter(x1[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors2[0], marker = "s") #square marker = RC1
         #plt.scatter(x1[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors1[0], marker = "*") #star marker = Rear5
 
     
@@ -108,31 +90,29 @@ def main(full_path, relative_path, fname1, fname2):#, fname2):
 
 
 
-    figure2 = plt.figure(2)
-    plt.bar(x2,
-           height=[np.mean(yi) for yi in y2],
-           yerr=[np.std(yi) for yi in y2],    # error bars
-           capsize=12, # error bar cap width in points
-           width=w,    # bar width
-           #tick_label=["Rear5/Ms22", "Ms22", "combined"],#"RC1"],
-           tick_label=['Ms22', 'RC1', 'Rear5'],
-           color=(0,0,0,0),  # face color transparent
-           edgecolor=['black'],
-         #ecolor=colors,    # error bar colors; setting this raises an error for whatever reason.
-         )
+    # figure2 = plt.figure(2)
+    # plt.bar(x2,
+    #        height=[np.mean(yi) for yi in y2],
+    #        yerr=[np.std(yi) for yi in y2],    # error bars
+    #        capsize=12, # error bar cap width in points
+    #        width=w,    # bar width
+    #        tick_label=['Ms22', 'RC1', 'Rear5'],
+    #        color=(0,0,0,0),  # face color transparent
+    #        edgecolor=['black'],
+    #      )
     
 
-    for i in range(len(x2)):
-        #distribute scatter randomly across whole width of bar
-        b = y2[i]
-        #print(y)
-        plt.scatter(x2[i] + np.random.random(b[0:5].size) * w - w / 2, b[0:5], color=colors2[1], marker='.') #circle marker = Ms22
-        plt.scatter(x2[i] + np.random.random(b[5:10].size) * w - w / 2, b[5:10], color=colors2[0], marker = "s") #square marker = RC1
+    # for i in range(len(x2)):
+    #     #distribute scatter randomly across whole width of bar
+    #     b = y2[i]
+    #     #print(y)
+    #     plt.scatter(x2[i] + np.random.random(b[0:5].size) * w - w / 2, b[0:5], color=colors2[1], marker='.') #circle marker = Ms22
+    #     plt.scatter(x2[i] + np.random.random(b[5:10].size) * w - w / 2, b[5:10], color=colors2[0], marker = "s") #square marker = RC1
 
   
-    plt.savefig(fname2, dpi=100)
-    plt.show()
-    plt.close()
+    # plt.savefig(fname2, dpi=100)
+    # plt.show()
+    # plt.close()
 
     
     
@@ -142,34 +122,34 @@ def main(full_path, relative_path, fname1, fname2):#, fname2):
     #                 box.width, box.height * 0.9])
     
 
-    # # # Put a legend below current axis
-    # #legend_colors = {'females':'red', 'males':'blue'}
-    # #labels = list(legend_colors.keys()) 
-    # #handles = [plt.Rectangle((0,0),1,1, color=legend_colors[labels]) for label in labels]
+    #LEGEND:
+    #legend_colors = {'females':'red', 'males':'blue'}
+    #labels = list(legend_colors.keys()) 
+    #handles = [plt.Rectangle((0,0),1,1, color=legend_colors[labels]) for label in labels]
 
    
-    # #ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),
-    # #        fancybox=False, shadow=True, ncol=5)
+    #ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),
+    #        fancybox=False, shadow=True, ncol=5)
 
     # Ms22 = mlines.Line2D([], [], color='blue', marker='.', linestyle='None', markersize=10, label='Ms22')
     # RC1 = mlines.Line2D([], [], color='red', marker='s', linestyle='None', markersize=10, label='RC1')
     # Rear5 = mlines.Line2D([], [], color='red', marker='*', linestyle='None', markersize=10, label='Rear5')
     # Rear1 = mlines.Line2D([], [], color='blue', marker='^', linestyle='None', markersize=10, label='Rear1')
-    # #female = mlines.Line2D([], [], color='red', marker='^', linestyle='None', markersize=10, label='Rear1')
-    # #male = mlines.Line2D([], [], color='blue', marker='^', linestyle='None', markersize=10, label='Rear1')
-    # #female  = mlines.Line2D([], [], marker='hello', linestyle='None', label='female')
+    #female = mlines.Line2D([], [], color='red', marker='^', linestyle='None', markersize=10, label='Rear1')
+    #male = mlines.Line2D([], [], color='blue', marker='^', linestyle='None', markersize=10, label='Rear1')
+    #female  = mlines.Line2D([], [], marker='hello', linestyle='None', label='female')
 
-    # #ax.legend(handles=[Ms22, RC1, Rear5, Rear1, plt.Rectangle((0,0),1,1, color='red'), plt.Rectangle((0,0),1,1, color='blue')])
-    # #legend = ax.legend(handles=[Ms22, RC1, Rear5, Rear1], (handletextpad=-2.0, handlelength=0))
+    #ax.legend(handles=[Ms22, RC1, Rear5, Rear1, plt.Rectangle((0,0),1,1, color='red'), plt.Rectangle((0,0),1,1, color='blue')])
+    #legend = ax.legend(handles=[Ms22, RC1, Rear5, Rear1], (handletextpad=-2.0, handlelength=0))
 
-    # # ax.annotate('R: female',xy=(15, -35), xycoords='axes points',
-    # #         size=10, ha='center', va='bottom',
-    # #         bbox=dict(boxstyle='square', fc='w'))
+    # ax.annotate('R: female',xy=(15, -35), xycoords='axes points',
+    #         size=10, ha='center', va='bottom',
+    #         bbox=dict(boxstyle='square', fc='w'))
 
-    # # color_l = ['red', 'blue']
-    # # for n, text in enumerate(legend.get_texts):
-    # #     print( n, text)
-    # #     text.set_color( color_l[n] )
+    # color_l = ['red', 'blue']
+    # for n, text in enumerate(legend.get_texts):
+    #     print( n, text)
+    #     text.set_color( color_l[n] )
 
     # plt.title("Performance of Animal Models")
     # plt.xlabel("Animal Model")
