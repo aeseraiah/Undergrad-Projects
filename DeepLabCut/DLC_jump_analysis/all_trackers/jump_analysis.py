@@ -6,6 +6,8 @@ from pathlib import Path
 import numpy as np
 import os
 
+#shows 3 graphs in total. First: single, combined. Second: 4 individual trackers. Third: single, avg of 4 ind trackers, combined
+
 full_path_directory = "C:/Users/7teal/Coding Projects/Undergrad-Projects/DeepLabCut/DLC_jump_analysis/all_trackers/"
 org_nose_directory = "org_csv_nose_files"
 org_rump_directory = "org_csv_rump_files"
