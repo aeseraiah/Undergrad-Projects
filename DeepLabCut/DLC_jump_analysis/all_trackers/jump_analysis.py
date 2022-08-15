@@ -31,14 +31,15 @@ def main(full_path, relative_path, fname1, fname2):
         nose_values1 = nose_df1.columns.values.astype(float)
         dataframes_list.append(nose_values1)
 
-    combined_values = dataframes_list[0]
-    print(combined_values)
-    combined_values_wo_Rear5 = combined_values[0:10]
-    print(combined_values_wo_Rear5)
+    # combined_values = dataframes_list[0]
+    #single_values = dataframes_list[0]
+    # print(combined_values)
+    # combined_values_wo_Rear5 = combined_values[0:10]
+    # print(combined_values_wo_Rear5)
 
-    Ms22_values = dataframes_list[1]
-    RC1_values = dataframes_list[2]
-    Rear5_values = dataframes_list[3]
+    # Ms22_values = dataframes_list[1]
+    # RC1_values = dataframes_list[2]
+    # Rear5_values = dataframes_list[3]
     single_values = dataframes_list[4]
     #Order of single trackers: Ms22, RC1, Rear5
   
@@ -48,9 +49,9 @@ def main(full_path, relative_path, fname1, fname2):
     x2 = [1, 2, 3, 4, 5]
     colors1 = ['red','blue']
     colors2 = ['red','blue', 'green', 'purple', 'orange', 'brown']
-    y1 = single_values, combined_values
+    y1 = single_values#, combined_values
     #y2 = Ms22_values, RC1_valuecds, Rear5_values
-    y3 = Ms22_values, RC1_values, Rear5_values, single_values, combined_values
+    #y3 = Ms22_values, RC1_values, Rear5_values, single_values, combined_values
     #y5 = single_trackers_df, combined_new_df_values, avg_new_df_values
 
     #AVG THE VALUES FROM 3 SINGLE TRACKERS
@@ -61,20 +62,22 @@ def main(full_path, relative_path, fname1, fname2):
     #print(avg_all_trackers)
     # y4 = avg_all_trackers
     
-    labels = ['single', 'combined']
+    labels = ['single']
 
     
 
     figure1 = plt.figure(1)
-    plt.bar(x2,
-           height=[np.mean(yi) for yi in y1],
-           yerr=[np.std(yi) for yi in y1],    # error bars
+    plt.bar(x1,
+           height=[np.mean(y1)],#height=[np.mean(yi) for yi in y1]
+           #yerr=[np.std(yi) for yi in y1],    # error bars
            capsize=12, # error bar cap width in points
            width=w,    # bar width
            tick_label=labels,
            color=(0,0,0,0),  # face color transparent
            edgecolor=['black'],
          )
+    height=[np.mean(y1)]
+    print(height)
 
     # exact_values=[np.mean(yi) for yi in y3]
     # print(exact_values)
@@ -82,12 +85,12 @@ def main(full_path, relative_path, fname1, fname2):
 
 
 
-    for i in range(len(x1)):
-        #distribute scatter randomly across whole width of bar
-        a = y1[i]
+    # for i in range(len(x1)):
+    #     #distribute scatter randomly across whole width of bar
+    #     a = y1[i]
         #print(y)
-        plt.scatter(x1[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors2[1], marker='.') #circle marker = Ms22
-        plt.scatter(x1[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors2[0], marker = "s") #square marker = RC1
+        #plt.scatter(x1[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors2[1], marker='.') #circle marker = Ms22
+        #plt.scatter(x1[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors2[0], marker = "s") #square marker = RC1
         #plt.scatter(x1[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors1[0], marker = "*") #star marker = Rear5
 
     os.chdir(current_dir + '/saved_figs')
@@ -197,4 +200,4 @@ def main(full_path, relative_path, fname1, fname2):
     # plt.show()
 
 
-main(full_path_directory, nose_directory , "nose_results_1.png", "nose_results_2.png")#, "nose_results_2.png")
+main(full_path_directory, org_nose_directory, "nose_results_1.png", "nose_results_2.png")#, "nose_results_2.png")
