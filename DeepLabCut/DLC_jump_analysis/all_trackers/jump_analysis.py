@@ -33,8 +33,8 @@ def main(full_path, relative_path, fname1, fname2):
         nose_values1 = nose_df1.columns.values.astype(float)
         dataframes_list.append(nose_values1)
 
-    # combined_values = dataframes_list[0]
-    #single_values = dataframes_list[0]
+    combined_values = dataframes_list[0]
+    single_values = dataframes_list[1]
     # print(combined_values)
     # combined_values_wo_Rear5 = combined_values[0:10]
     # print(combined_values_wo_Rear5)
@@ -42,16 +42,17 @@ def main(full_path, relative_path, fname1, fname2):
     # Ms22_values = dataframes_list[1]
     # RC1_values = dataframes_list[2]
     # Rear5_values = dataframes_list[3]
-    single_values = dataframes_list[4]
-    #Order of single trackers: Ms22, RC1, Rear5
+    #single_values = dataframes_list[4]
+    #Order of single trackers: Ms21, Ms22, RC1, Rear5
+    #Naming convention: Ms21 = Rat1, Ms22 = Rat2, RC1 = Rat3, Rear5 = Rat4
   
 
     w = .9 # bar width
-    x1 = [1]
+    x1 = [1, 2]
     x2 = [1, 2, 3, 4, 5]
     colors1 = ['red','blue']
     colors2 = ['red','blue', 'green', 'purple', 'orange', 'brown']
-    y1 = single_values#, combined_values
+    y1 = single_values, combined_values
     #y2 = Ms22_values, RC1_valuecds, Rear5_values
     #y3 = Ms22_values, RC1_values, Rear5_values, single_values, combined_values
     #y5 = single_trackers_df, combined_new_df_values, avg_new_df_values
@@ -64,21 +65,21 @@ def main(full_path, relative_path, fname1, fname2):
     #print(avg_all_trackers)
     # y4 = avg_all_trackers
     
-    labels = ['single']
+    labels = ['combined', 'single']
 
     
 
     figure1 = plt.figure(1)
     plt.bar(x1,
-           height=[np.mean(y1)],#height=[np.mean(yi) for yi in y1]
-           #yerr=[np.std(yi) for yi in y1],    # error bars
+           height=[np.mean(yi) for yi in y1],
+           yerr=[np.std(yi) for yi in y1],    # error bars
            capsize=12, # error bar cap width in points
            width=w,    # bar width
            tick_label=labels,
            color=(0,0,0,0),  # face color transparent
            edgecolor=['black'],
-         )
-    height=[np.mean(y1)]
+            )
+    height=[np.mean(yi) for yi in y1]
     print(height)
 
     # exact_values=[np.mean(yi) for yi in y3]
