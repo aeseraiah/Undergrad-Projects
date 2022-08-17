@@ -39,40 +39,25 @@ def main(full_path, relative_path, fname1, fname2):
     RC1_values = dataframes_list[3]
     single_values = dataframes_list[4]
 
-
-    # print(combined_values)
-    # combined_values_wo_Rear5 = combined_values[0:10]
-    # print(combined_values_wo_Rear5)
-
-    # Ms22_values = dataframes_list[1]
-    # RC1_values = dataframes_list[2]
-    # Rear5_values = dataframes_list[3]
-    #single_values = dataframes_list[4]
     #Order of single trackers: Ms21, Ms22, RC1, Rear5
     #Naming convention: Ms21 = Rat1, Ms22 = Rat2, RC1 = Rat3, Rear5 = Rat4
   
 
     w = .9 # bar width
-    x1 = [1, 2, 3]
-    x2 = [1, 2, 3, 4, 5]
-    colors1 = ['red','blue', 'green']
-    colors2 = ['red','blue', 'green', 'purple', 'orange', 'brown']
+    x1 = [1, 2, 3, 4, 5]
+    colors1 = ['red','blue', 'green', 'purple', 'orange']
+    colors2 = ['red', 'blue']
     y1 = single_values, combined_values, Ms21_values, Ms22_values, RC1_values
-    #y2 = Ms22_values, RC1_valuecds, Rear5_values
-    #y3 = Ms22_values, RC1_values, Rear5_values, single_values, combined_values
     #y5 = single_trackers_df, combined_new_df_values, avg_new_df_values
 
     #AVG THE VALUES FROM 3 SINGLE TRACKERS
     # avg_per_tracker =[np.mean(yi) for yi in y2]
     #print(avg_per_tracker)
     # avg_all_trackers = np.mean(avg_per_tracker)
-    # std_dev_all_trackers = np.std(avg_per_tracker)
     #print(avg_all_trackers)
-    # y4 = avg_all_trackers
+    #y4 = avg_all_trackers
     
-    labels = ['combined', 'single', 'Ms21']
-
-    
+    labels = ['single', 'combined', 'Ms21', 'Ms22', 'RC1']
 
     # for i in range(len(x1)):
     #     a = y1[i]  
@@ -104,8 +89,8 @@ def main(full_path, relative_path, fname1, fname2):
         a = y1[i]
         plt.scatter(x1[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors2[1], marker='.') #circle marker = Ms21
         plt.scatter(x1[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors2[1], marker = "s") #square marker = Ms22
-        plt.scatter(x1[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors1[0], marker = "*") #star marker = RC1
-        plt.scatter(x1[i] + np.random.random(a[15:20].size) * w - w / 2, a[15:20], color=colors1[0], marker = "^") #triangle marker = Rear5
+        plt.scatter(x1[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors2[0], marker = "*") #star marker = RC1
+        plt.scatter(x1[i] + np.random.random(a[15:20].size) * w - w / 2, a[15:20], color=colors2[0], marker = "^") #triangle marker = Rear5
 
     os.chdir(current_dir + '/saved_figs')
     plt.savefig(fname1, dpi=100)
@@ -214,4 +199,4 @@ def main(full_path, relative_path, fname1, fname2):
     # plt.show()
 
 
-main(full_path_directory, nose_directory, "nose_results_1.png", "nose_results_2.png")#, "nose_results_2.png")
+main(full_path_directory, rump_directory, "nose_results_1.png", "nose_results_2.png")#, "nose_results_2.png")
