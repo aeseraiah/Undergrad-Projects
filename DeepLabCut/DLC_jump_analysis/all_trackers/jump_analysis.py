@@ -35,7 +35,11 @@ def main(full_path, relative_path, fname1, fname2):
 
     combined_values = dataframes_list[0]
     Ms21_values = dataframes_list[1]
-    single_values = dataframes_list[2]
+    Ms22_values = dataframes_list[2]
+    RC1_values = dataframes_list[3]
+    single_values = dataframes_list[4]
+
+
     # print(combined_values)
     # combined_values_wo_Rear5 = combined_values[0:10]
     # print(combined_values_wo_Rear5)
@@ -53,7 +57,7 @@ def main(full_path, relative_path, fname1, fname2):
     x2 = [1, 2, 3, 4, 5]
     colors1 = ['red','blue', 'green']
     colors2 = ['red','blue', 'green', 'purple', 'orange', 'brown']
-    y1 = single_values, combined_values, Ms21_values
+    y1 = single_values, combined_values, Ms21_values, Ms22_values, RC1_values
     #y2 = Ms22_values, RC1_valuecds, Rear5_values
     #y3 = Ms22_values, RC1_values, Rear5_values, single_values, combined_values
     #y5 = single_trackers_df, combined_new_df_values, avg_new_df_values
@@ -69,6 +73,12 @@ def main(full_path, relative_path, fname1, fname2):
     labels = ['combined', 'single', 'Ms21']
 
     
+
+    # for i in range(len(x1)):
+    #     a = y1[i]  
+    #     a[10:15]#star marker = RC1
+    #     plt.scatter(x1[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors1[0], marker = "^") # marker = Rear5
+
 
     figure1 = plt.figure(1)
     plt.bar(x1,
@@ -89,13 +99,13 @@ def main(full_path, relative_path, fname1, fname2):
 
 
 
-    # for i in range(len(x1)):
-    #     #distribute scatter randomly across whole width of bar
-    #     a = y1[i]
-        #print(y)
-        #plt.scatter(x1[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors2[1], marker='.') #circle marker = Ms22
-        #plt.scatter(x1[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors2[0], marker = "s") #square marker = RC1
-        #plt.scatter(x1[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors1[0], marker = "*") #star marker = Rear5
+    for i in range(len(x1)):
+        #distribute scatter randomly across whole width of bar
+        a = y1[i]
+        plt.scatter(x1[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors2[1], marker='.') #circle marker = Ms21
+        plt.scatter(x1[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors2[1], marker = "s") #square marker = Ms22
+        plt.scatter(x1[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors1[0], marker = "*") #star marker = RC1
+        plt.scatter(x1[i] + np.random.random(a[15:20].size) * w - w / 2, a[15:20], color=colors1[0], marker = "^") #triangle marker = Rear5
 
     os.chdir(current_dir + '/saved_figs')
     plt.savefig(fname1, dpi=100)
