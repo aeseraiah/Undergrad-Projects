@@ -57,21 +57,18 @@ def main(full_path, relative_path, fname1, fname2):
     colors = ['red', 'blue']
     y1 = single_values, combined_values
     y2 = Ms21_values, Ms22_values, RC1_values, Rear5_values 
-    #y3 = single_values, combined_values, avg_new_df_values
+
+    labels1 = ['single', 'combined']
+    labels2 = ['Ms21', 'Ms22', 'RC1', 'Rear5']
+    labels3 = ["single', 'combined', 'individual_avg'"]
 
     #AVG THE VALUES FROM 3 SINGLE TRACKERS
     avg_per_tracker =[np.mean(yi) for yi in y2]
     print(avg_per_tracker)
     avg_all_trackers = np.mean(avg_per_tracker)
-    print(avg_all_trackers)
-    
-    labels1 = ['single', 'combined']
-    labels2 = ['Ms21', 'Ms22', 'RC1', 'Rear5']
+    print("avg_all_trackers:\n", avg_all_trackers)
 
-    # for i in range(len(x1)):
-    #     a = y1[i]  
-    #     a[10:15]#star marker = RC1
-    #     plt.scatter(x1[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors1[0], marker = "^") # marker = Rear5
+    y3 = single_values, combined_values, avg_all_trackers
 
 
     figure1 = plt.figure(1)
@@ -84,8 +81,8 @@ def main(full_path, relative_path, fname1, fname2):
            color=(0,0,0,0),  # face color transparent
            edgecolor=['black'],
         )
-    height=[np.mean(yi) for yi in y1]
-    print(height)
+    single_combined_bar_val=[np.mean(yi) for yi in y1]
+    print("single_combined_bar_val:\n", single_combined_bar_val)
 
     # exact_values=[np.mean(yi) for yi in y3]
     # print(exact_values)
@@ -174,9 +171,25 @@ def main(full_path, relative_path, fname1, fname2):
     plt.show()
     plt.close()
 
+
+    #SINGLE, COMBINED, AND AVG GRAPH: 
+    # figure3 = plt.figure(1)
+    # plt.bar(x3,
+    #     height=[np.mean(yi) for yi in y1],
+    #     #yerr=[np.std(yi) for yi in y1],    # error bars
+    #     capsize=12, # error bar cap width in points
+    #     width=w,    # bar width
+    #     tick_label=labels3,
+    #     color=(0,0,0,0),  # face color transparent
+    #     edgecolor=['black'],
+    #         )
+
+    # plt.savefig('test_graph.png', dpi=100)
+    # plt.show()
+    # plt.close()
+
     
-    
-    
+    #LEGEND:
     #box = plt.get_position()
     #plt.set_position([box.x0, box.y0 + box.height * 0.1,
     #                 box.width, box.height * 0.9])
@@ -215,40 +228,6 @@ def main(full_path, relative_path, fname1, fname2):
     # plt.xlabel("Animal Model")
     # plt.ylabel("% of jumps")
     # #plt.legend(['x = x'],['s'],bbox_to_anchor =(0.65, 1.25), loc='lower center')
-
-    # os.chdir(current_dir + '/saved_figs')
-    # figure = plt.gcf()
-    # figure.set_size_inches(10, 6)
-
-    # plt.savefig(fname, dpi=100)
-    # plt.show()
-    # plt.close()
-
-
-    # figure1 = plt.figure(1)
-    # plt.bar(x,
-    #        height=[np.mean(yi) for yi in y],
-    #        yerr=[np.std(yi) for yi in y],    # error bars
-    #        capsize=12, # error bar cap width in points
-    #        width=w,    # bar width
-    #        #tick_label=["Rear5/Ms22", "Ms22", "combined"],#"RC1"],
-    #        tick_label=['single trackers', 'combined tracker'],
-    #        color=(0,0,0,0),  # face color transparent
-    #        edgecolor=['black'],
-    #      #ecolor=colors,    # error bar colors; setting this raises an error for whatever reason.
-    #      )
-
-    # os.chdir(current_dir + '/saved_figs')
-    # # f = plt.figure(1)
-    # # plt.plot([1,2],[2,3])
-    # plt.savefig(fname1, dpi=100)
-    # #plt.savefig(fname2, dpi=100)
-    # plt.show()
-
-    # g = plt.figure(2)
-    # plt.plot([2,7,3],[5,1,9])
-    # plt.savefig(fname2, dpi=100)
-    # plt.show()
 
 
 main(full_path_directory, nose_directory, "test-nose-results_single_combined.png", "nose-results_ind.png")#, "nose_results_2.png")
