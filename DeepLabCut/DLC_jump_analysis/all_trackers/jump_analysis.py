@@ -34,11 +34,17 @@ def main(full_path, relative_path, fname1, fname2):
         dataframes_list.append(nose_values1)
 
     combined_values = dataframes_list[0]
+    print("combined_values:\n", combined_values)
     Ms21_values = dataframes_list[1]
+    print("Ms21_values:\n", Ms21_values)
     Ms22_values = dataframes_list[2]
+    print("Ms22_values:\n", Ms22_values)
     RC1_values = dataframes_list[3]
+    print("RC1_values:\n", RC1_values)
     Rear5_values = dataframes_list[4]
+    print("Rear5_values:\n", Rear5_values)
     single_values = dataframes_list[5]
+    print("single_values:\n", single_values)
 
     #Order of single trackers: Ms21, Ms22, RC1, Rear5
     #Naming convention: Ms21 = Rat1, Ms22 = Rat2, RC1 = Rat3, Rear5 = Rat4
@@ -85,14 +91,14 @@ def main(full_path, relative_path, fname1, fname2):
     # exact_values=[np.mean(yi) for yi in y3]
     # print(exact_values)
 
-    test_a = y1[0] 
-    test_var = np.random.random(test_a[0:5].size)
-    print(test_var)
+    # test_a = y1[0] 
+    # test_var = np.random.random(test_a[0:5].size)
+    # print(test_var)
 
     for i in range(len(x1)):
         #distribute scatter randomly across whole width of bar
         a = y1[i]
-        plt.scatter(x1[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors2[1], marker='.') #circle marker = Ms21
+        plt.scatter(x1[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors2[1], marker='o') #circle marker = Ms21
         plt.scatter(x1[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors2[1], marker = "s") #square marker = Ms22
         plt.scatter(x1[i] + np.random.random(a[10:15].size) * w - w / 2, a[10:15], color=colors2[0], marker = "*") #star marker = RC1
         plt.scatter(x1[i] + np.random.random(a[15:20].size) * w - w / 2, a[15:20], color=colors2[0], marker = "^") #triangle marker = Rear5
@@ -131,20 +137,38 @@ def main(full_path, relative_path, fname1, fname2):
     #star marker = RC1
     #triangle marker = Rear5
 
-    # for i in range(len(x2)):
-    #     b = y2[0]
-    #     c = y2[1]
-    #     d = y2[2]
-    #     e = y2[3]
-    #     #Ms21 Tracker:
-    #     plt.scatter(x2[i] + np.random.random(b[0:5].size) * w - w / 2, b[0:5], color=colors2[1], marker='s') #square marker = Ms22
-    #     plt.scatter(x2[i] + np.random.random(b[5:10].size) * w - w / 2, b[5:10], color=colors2[0], marker='*') #circle marker = Ms21
-    #     plt.scatter(x2[i] + np.random.random(b[5:10].size) * w - w / 2, b[5:10], color=colors2[0], marker='*') #circle marker = Ms21
 
-    #     #Ms22 Tracker:
-    #     plt.scatter(x2[i] + np.random.random(c[5:10].size) * w - w / 2, c[5:10], color=colors2[0], marker = "s") #square marker = Ms22
-    #     plt.scatter(x2[i] + np.random.random(d[10:15].size) * w - w / 2, d[10:15], color=colors2[0], marker = "*") #star marker = RC1
-    #     plt.scatter(x2[i] + np.random.random(e[5:10].size) * w - w / 2, e[10:15], color=colors2[0], marker = "^") #triangle marker = Rear5
+    # Ms21 = y2[0]
+    # Ms22 = y2[1]
+    # RC1 = y2[2]
+    # Rear5 = y2[3]
+    # arr_temp = [Ms21, Ms22, RC1, Rear5]
+
+    #for i in range(len(x2)):
+    Ms21 = y2[0]
+    Ms22 = y2[1]
+    RC1 = y2[2]
+    Rear5 = y2[3]
+    #for i in range(len(arr_temp)):
+    #Ms21 Tracker:
+    plt.scatter(x2[0] + np.random.random(Ms21[0:5].size) * w - w / 2, Ms21[0:5], color=colors2[1], marker='s') #square marker = Ms22
+    plt.scatter(x2[0] + np.random.random(Ms21[5:10].size) * w - w / 2, Ms21[5:10], color=colors2[0], marker='*') #star marker = RC1
+    plt.scatter(x2[0] + np.random.random(Ms21[10:15].size) * w - w / 2, Ms21[10:15], color=colors2[0], marker='^') #triangle marker = Rear5
+
+    #Ms22 Tracker:
+    plt.scatter(x2[1] + np.random.random(Ms22[0:5].size) * w - w / 2, Ms22[0:5], color=colors2[1], marker = "o") #circle marker = Ms21
+    plt.scatter(x2[1] + np.random.random(Ms22[5:10].size) * w - w / 2, Ms22[5:10], color=colors2[0], marker = "*") #star marker = RC1
+    plt.scatter(x2[1] + np.random.random(Ms22[10:15].size) * w - w / 2, Ms22[10:15], color=colors2[0], marker='^') #triangle marker = Rear5
+
+    #RC1 Tracker:
+    plt.scatter(x2[2] + np.random.random(RC1[0:5].size) * w - w / 2, RC1[0:5], color=colors2[1], marker = "o") #circle marker = Ms21
+    plt.scatter(x2[2] + np.random.random(RC1[5:10].size) * w - w / 2, RC1[5:10], color=colors2[1], marker = "s") #square marker = Ms22
+    plt.scatter(x2[2] + np.random.random(RC1[10:15].size) * w - w / 2, RC1[10:15], color=colors2[0], marker='^') #triangle marker = Rear5      
+
+    #Rear5 Tracker:
+    plt.scatter(x2[3] + np.random.random(Rear5[0:5].size) * w - w / 2, Rear5[0:5], color=colors2[1], marker = "o") #circle marker = Ms21
+    plt.scatter(x2[3] + np.random.random(Rear5[5:10].size) * w - w / 2, Rear5[5:10], color=colors2[1], marker = "s") #square marker = Ms22
+    plt.scatter(x2[3] + np.random.random(Rear5[10:15].size) * w - w / 2, Rear5[10:15], color=colors2[0], marker='*') #star marker = RC1
 
   
     plt.savefig(fname2, dpi=100)
