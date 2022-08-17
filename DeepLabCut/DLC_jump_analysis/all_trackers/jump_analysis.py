@@ -34,7 +34,8 @@ def main(full_path, relative_path, fname1, fname2):
         dataframes_list.append(nose_values1)
 
     combined_values = dataframes_list[0]
-    single_values = dataframes_list[1]
+    Ms21_values = dataframes_list[1]
+    single_values = dataframes_list[2]
     # print(combined_values)
     # combined_values_wo_Rear5 = combined_values[0:10]
     # print(combined_values_wo_Rear5)
@@ -48,11 +49,11 @@ def main(full_path, relative_path, fname1, fname2):
   
 
     w = .9 # bar width
-    x1 = [1, 2]
+    x1 = [1, 2, 3]
     x2 = [1, 2, 3, 4, 5]
-    colors1 = ['red','blue']
+    colors1 = ['red','blue', 'green']
     colors2 = ['red','blue', 'green', 'purple', 'orange', 'brown']
-    y1 = single_values, combined_values
+    y1 = single_values, combined_values, Ms21_values
     #y2 = Ms22_values, RC1_valuecds, Rear5_values
     #y3 = Ms22_values, RC1_values, Rear5_values, single_values, combined_values
     #y5 = single_trackers_df, combined_new_df_values, avg_new_df_values
@@ -65,7 +66,7 @@ def main(full_path, relative_path, fname1, fname2):
     #print(avg_all_trackers)
     # y4 = avg_all_trackers
     
-    labels = ['combined', 'single']
+    labels = ['combined', 'single', 'Ms21']
 
     
 
@@ -203,4 +204,4 @@ def main(full_path, relative_path, fname1, fname2):
     # plt.show()
 
 
-main(full_path_directory, org_nose_directory, "nose_results_1.png", "nose_results_2.png")#, "nose_results_2.png")
+main(full_path_directory, nose_directory, "nose_results_1.png", "nose_results_2.png")#, "nose_results_2.png")
