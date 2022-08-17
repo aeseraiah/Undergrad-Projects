@@ -112,6 +112,11 @@ def main(full_path, relative_path, fname1, fname2):
            color=(0,0,0,0),  # face color transparent
            edgecolor=['black'],
          )
+
+    height2=[np.mean(yi) for yi in y2]
+    print(height2)
+    mean_height = [np.mean(height2)]
+    print(mean_height)
     
 
     #csv order for ind trackers:
