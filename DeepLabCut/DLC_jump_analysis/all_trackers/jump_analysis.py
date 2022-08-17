@@ -37,17 +37,20 @@ def main(full_path, relative_path, fname1, fname2):
     Ms21_values = dataframes_list[1]
     Ms22_values = dataframes_list[2]
     RC1_values = dataframes_list[3]
-    single_values = dataframes_list[4]
+    Rear5_values = dataframes_list[4]
+    single_values = dataframes_list[5]
 
     #Order of single trackers: Ms21, Ms22, RC1, Rear5
     #Naming convention: Ms21 = Rat1, Ms22 = Rat2, RC1 = Rat3, Rear5 = Rat4
   
 
     w = .9 # bar width
-    x1 = [1, 2, 3, 4, 5]
+    x1 = [1, 2]
+    x2 = [1, 2, 3, 4]
     colors1 = ['red','blue', 'green', 'purple', 'orange']
     colors2 = ['red', 'blue']
-    y1 = single_values, combined_values, Ms21_values, Ms22_values, RC1_values
+    y1 = single_values, combined_values
+    y2 = Ms21_values, Ms22_values, RC1_values, Rear5_values 
     #y5 = single_trackers_df, combined_new_df_values, avg_new_df_values
 
     #AVG THE VALUES FROM 3 SINGLE TRACKERS
@@ -57,7 +60,8 @@ def main(full_path, relative_path, fname1, fname2):
     #print(avg_all_trackers)
     #y4 = avg_all_trackers
     
-    labels = ['single', 'combined', 'Ms21', 'Ms22', 'RC1']
+    labels1 = ['single', 'combined']
+    labels2 = ['Ms21', 'Ms22', 'RC1', 'Rear5']
 
     # for i in range(len(x1)):
     #     a = y1[i]  
@@ -71,10 +75,10 @@ def main(full_path, relative_path, fname1, fname2):
            yerr=[np.std(yi) for yi in y1],    # error bars
            capsize=12, # error bar cap width in points
            width=w,    # bar width
-           tick_label=labels,
+           tick_label=labels1,
            color=(0,0,0,0),  # face color transparent
            edgecolor=['black'],
-            )
+        )
     height=[np.mean(yi) for yi in y1]
     print(height)
 
@@ -98,29 +102,36 @@ def main(full_path, relative_path, fname1, fname2):
     plt.close()
 
 
-    # figure2 = plt.figure(2)
-    # plt.bar(x2,
-    #        height=[np.mean(yi) for yi in y2],
-    #        yerr=[np.std(yi) for yi in y2],    # error bars
-    #        capsize=12, # error bar cap width in points
-    #        width=w,    # bar width
-    #        tick_label=['Ms22', 'RC1', 'Rear5'],
-    #        color=(0,0,0,0),  # face color transparent
-    #        edgecolor=['black'],
-    #      )
+    figure2 = plt.figure(2)
+    plt.bar(x2,
+           height=[np.mean(yi) for yi in y2],
+           yerr=[np.std(yi) for yi in y2],    # error bars
+           capsize=12, # error bar cap width in points
+           width=w,    # bar width
+           tick_label=labels2,
+           color=(0,0,0,0),  # face color transparent
+           edgecolor=['black'],
+         )
     
 
-    # for i in range(len(x2)):
-    #     #distribute scatter randomly across whole width of bar
-    #     b = y2[i]
-    #     #print(y)
-    #     plt.scatter(x2[i] + np.random.random(b[0:5].size) * w - w / 2, b[0:5], color=colors2[1], marker='.') #circle marker = Ms22
-    #     plt.scatter(x2[i] + np.random.random(b[5:10].size) * w - w / 2, b[5:10], color=colors2[0], marker = "s") #square marker = RC1
+    #csv order for ind trackers:
+    #Ms21: Ms22, RC1, Rear5
+    #Ms22: Ms21, RC1, Rear5
+    #RC1: Ms21, Ms22, Rear5
+    #Rear5: Ms21, Ms22, RC1
+
+    for i in range(len(x2)):
+        #distribute scatter randomly across whole width of bar
+        b = y2[i]
+        #print(y)
+        plt.scatter(x2[i] + np.random.random(b[0:5].size) * w - w / 2, b[0:5], color=colors2[1], marker='.') #circle marker = Ms22
+        plt.scatter(x2[i] + np.random.random(b[5:10].size) * w - w / 2, b[5:10], color=colors2[0], marker = "s") #square marker = RC1
+        plt.scatter(x2[i] + np.random.random(b[5:10].size) * w - w / 2, b[10:15], color=colors2[0], marker = "^") #square marker = RC1
 
   
-    # plt.savefig(fname2, dpi=100)
-    # plt.show()
-    # plt.close()
+    plt.savefig(fname2, dpi=100)
+    plt.show()
+    plt.close()
 
     
     
@@ -199,4 +210,4 @@ def main(full_path, relative_path, fname1, fname2):
     # plt.show()
 
 
-main(full_path_directory, rump_directory, "nose_results_1.png", "nose_results_2.png")#, "nose_results_2.png")
+main(full_path_directory, nose_directory, "nose-results_single_combined.png", "nose-results_ind.png")#, "nose_results_2.png")
