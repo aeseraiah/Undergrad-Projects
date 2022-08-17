@@ -85,8 +85,9 @@ def main(full_path, relative_path, fname1, fname2):
     # exact_values=[np.mean(yi) for yi in y3]
     # print(exact_values)
 
-
-
+    test_a = y1[0] 
+    test_var = np.random.random(test_a[0:5].size)
+    print(test_var)
 
     for i in range(len(x1)):
         #distribute scatter randomly across whole width of bar
@@ -125,13 +126,25 @@ def main(full_path, relative_path, fname1, fname2):
     #RC1: Ms21, Ms22, Rear5
     #Rear5: Ms21, Ms22, RC1
 
-    for i in range(len(x2)):
-        #distribute scatter randomly across whole width of bar
-        b = y2[i]
-        #print(y)
-        plt.scatter(x2[i] + np.random.random(b[0:5].size) * w - w / 2, b[0:5], color=colors2[1], marker='.') #circle marker = Ms22
-        plt.scatter(x2[i] + np.random.random(b[5:10].size) * w - w / 2, b[5:10], color=colors2[0], marker = "s") #square marker = RC1
-        plt.scatter(x2[i] + np.random.random(b[5:10].size) * w - w / 2, b[10:15], color=colors2[0], marker = "^") #square marker = RC1
+    #circle marker = Ms21
+    #square marker = Ms22
+    #star marker = RC1
+    #triangle marker = Rear5
+
+    # for i in range(len(x2)):
+    #     b = y2[0]
+    #     c = y2[1]
+    #     d = y2[2]
+    #     e = y2[3]
+    #     #Ms21 Tracker:
+    #     plt.scatter(x2[i] + np.random.random(b[0:5].size) * w - w / 2, b[0:5], color=colors2[1], marker='s') #square marker = Ms22
+    #     plt.scatter(x2[i] + np.random.random(b[5:10].size) * w - w / 2, b[5:10], color=colors2[0], marker='*') #circle marker = Ms21
+    #     plt.scatter(x2[i] + np.random.random(b[5:10].size) * w - w / 2, b[5:10], color=colors2[0], marker='*') #circle marker = Ms21
+
+    #     #Ms22 Tracker:
+    #     plt.scatter(x2[i] + np.random.random(c[5:10].size) * w - w / 2, c[5:10], color=colors2[0], marker = "s") #square marker = Ms22
+    #     plt.scatter(x2[i] + np.random.random(d[10:15].size) * w - w / 2, d[10:15], color=colors2[0], marker = "*") #star marker = RC1
+    #     plt.scatter(x2[i] + np.random.random(e[5:10].size) * w - w / 2, e[10:15], color=colors2[0], marker = "^") #triangle marker = Rear5
 
   
     plt.savefig(fname2, dpi=100)
@@ -215,4 +228,4 @@ def main(full_path, relative_path, fname1, fname2):
     # plt.show()
 
 
-main(full_path_directory, nose_directory, "nose-results_single_combined.png", "nose-results_ind.png")#, "nose_results_2.png")
+main(full_path_directory, nose_directory, "test-nose-results_single_combined.png", "nose-results_ind.png")#, "nose_results_2.png")
