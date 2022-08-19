@@ -62,7 +62,6 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     labels2 = ['Ms21', 'Ms22', 'RC1', 'Rear5']
     labels3 = ['single', 'combined', 'individual_tracker_avg']
 
-
     figure1 = plt.figure(1)
     plt.bar(x1,
            height=[np.mean(yi) for yi in y1],
@@ -87,6 +86,9 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
     os.chdir(current_dir + '/saved_figs')
     plt.savefig(fname1, dpi=100)
+    plt.title("Animal Model Performance")
+    plt.xlabel("Model")
+    plt.ylabel("% of Jumps")
     plt.show()
     plt.close()
 
@@ -144,6 +146,9 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.scatter(x2[3] + np.array([0.12, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, Rear5_tracker[10:15], color=colors[0], marker='*') #star marker = RC1
 
   
+    plt.title("Animal Model Performance")
+    plt.xlabel("Model")
+    plt.ylabel("% of Jumps")
     plt.savefig(fname2, dpi=100)
     plt.show()
     plt.close()
@@ -228,6 +233,9 @@ def main(full_path, relative_path, fname1, fname2, fname3):
         plt.scatter(x3[i] + np.array([0.15, 0.4, 0.6, 0.7, 0.9]) * w - w / 2, a[10:15], color=colors[0], marker = "*") #star marker = RC1
         plt.scatter(x3[i] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, a[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
 
+    plt.title("Animal Model Performance")
+    plt.xlabel("Model")
+    plt.ylabel("% of Jumps")
     plt.savefig(fname3, dpi=200)
     plt.show()
     plt.close()
