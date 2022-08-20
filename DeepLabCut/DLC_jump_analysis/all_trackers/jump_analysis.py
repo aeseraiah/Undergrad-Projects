@@ -83,14 +83,16 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.xlabel("Model")
     plt.ylabel("% of Jumps")
 
-    ax = plt.subplot(111)
+    def legend():
+        ax = plt.subplot(111)
 
-    # Shrink current axis by 20%
-    box = ax.get_position()
-    ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
+        # Shrink current axis by 20%
+        box = ax.get_position()
+        ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
 
-    ax.legend(["Rat 1: Male (18-25 months)", "Rat 2: Male (16-20 months)", "Rat 3: Female (10-14 months)", "Rat 4: Female (4-7 months)"], bbox_to_anchor=(1.04, 0.5), loc="best", borderaxespad=0)
+        ax.legend(["Rat 1: Male (18-25 months)", "Rat 2: Male (16-20 months)", "Rat 3: Female (10-14 months)", "Rat 4: Female (4-7 months)"], bbox_to_anchor=(1.04, 0.5), loc="best", borderaxespad=0)
 
+    legend()
     plt.savefig(fname1, dpi=200)
     plt.show()
     plt.close()
@@ -152,6 +154,8 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.title("Animal Model Performance")
     plt.xlabel("Individual Model")
     plt.ylabel("% of Jumps")
+
+    legend()
     plt.savefig(fname2, dpi=100)
     plt.show()
     plt.close()
@@ -238,60 +242,10 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.title("Animal Model Performance")
     plt.xlabel("Model")
     plt.ylabel("% of Jumps")
-
        
-    #LEGEND:   
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),
-           fancybox=False, shadow=True, ncol=5)
-
-    plt.legend(handles=[Ms21_values, Ms22_values, RC1_values, Rear5_values, plt.Rectangle((0,0),1,1, color='red'), plt.Rectangle((0,0),1,1, color='blue')])
-    #legend = plt.legend(handles=[Ms22, RC1, Rear5, Rear1], (handletextpad=-2.0, handlelength=0))
-
-
+    legend()
     plt.savefig(fname3, dpi=200)
     plt.show()
     plt.close()
-
-    
-    #LEGEND:
-    #box = plt.get_position()
-    #plt.set_position([box.x0, box.y0 + box.height * 0.1,
-    #                 box.width, box.height * 0.9])
-    
-
-    #LEGEND:
-    #legend_colors = {'females':'red', 'males':'blue'}
-    #labels = list(legend_colors.keys()) 
-    #handles = [plt.Rectangle((0,0),1,1, color=legend_colors[labels]) for label in labels]
-
-   
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),
-           fancybox=False, shadow=True, ncol=5)
-
-    # Ms22 = mlines.Line2D([], [], color='blue', marker='.', linestyle='None', markersize=10, label='Ms22')
-    # RC1 = mlines.Line2D([], [], color='red', marker='s', linestyle='None', markersize=10, label='RC1')
-    # Rear5 = mlines.Line2D([], [], color='red', marker='*', linestyle='None', markersize=10, label='Rear5')
-    # Rear1 = mlines.Line2D([], [], color='blue', marker='^', linestyle='None', markersize=10, label='Rear1')
-    #female = mlines.Line2D([], [], color='red', marker='^', linestyle='None', markersize=10, label='Rear1')
-    #male = mlines.Line2D([], [], color='blue', marker='^', linestyle='None', markersize=10, label='Rear1')
-    #female  = mlines.Line2D([], [], marker='hello', linestyle='None', label='female')
-
-    #ax.legend(handles=[Ms22, RC1, Rear5, Rear1, plt.Rectangle((0,0),1,1, color='red'), plt.Rectangle((0,0),1,1, color='blue')])
-    #legend = ax.legend(handles=[Ms22, RC1, Rear5, Rear1], (handletextpad=-2.0, handlelength=0))
-
-    # ax.annotate('R: female',xy=(15, -35), xycoords='axes points',
-    #         size=10, ha='center', va='bottom',
-    #         bbox=dict(boxstyle='square', fc='w'))
-
-    # color_l = ['red', 'blue']
-    # for n, text in enumerate(legend.get_texts):
-    #     print( n, text)
-    #     text.set_color( color_l[n] )
-
-    # plt.title("Performance of Animal Models")
-    # plt.xlabel("Animal Model")
-    # plt.ylabel("% of jumps")
-    # #plt.legend(['x = x'],['s'],bbox_to_anchor =(0.65, 1.25), loc='lower center')
-
 
 main(full_path_directory, nose_directory, "test-nose-results_single_combined.png", "nose-results_ind.png", "nose-results-all.png")#, "nose_results_2.png")
