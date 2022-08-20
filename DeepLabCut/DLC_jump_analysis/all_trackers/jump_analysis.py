@@ -83,16 +83,12 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.xlabel("Model")
     plt.ylabel("% of Jumps")
 
-    #plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), fancybox=False, shadow=True, ncol=5)
     ax = plt.subplot(111)
-
 
     # Shrink current axis by 20%
     box = ax.get_position()
     ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
 
-    # Put a legend to the right of the current axis
-    #plt.legend(["Rat 1: Male (16-20 months)", "orange", 'd', 'a'], bbox_to_anchor=(1.04, 0.5), loc="best", borderaxespad=0)
     ax.legend(["Rat 1: Male (18-25 months)", "Rat 2: Male (16-20 months)", "Rat 3: Female (10-14 months)", "Rat 4: Female (4-7 months)"], bbox_to_anchor=(1.04, 0.5), loc="best", borderaxespad=0)
 
     plt.savefig(fname1, dpi=200)
