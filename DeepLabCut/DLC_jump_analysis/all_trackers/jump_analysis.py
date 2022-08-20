@@ -8,7 +8,8 @@ import os
 
 #shows 3 graphs in total. First: single, combined. Second: 4 individual trackers. Third: single, combined, avg of 4 ind trackers
 
-full_path_directory = "C:/Users/7teal/Coding Projects/Undergrad-Projects/DeepLabCut/DLC_jump_analysis/all_trackers/"
+#full_path_directory = "C:/Users/7teal/Coding Projects/Undergrad-Projects/DeepLabCut/DLC_jump_analysis/all_trackers/"
+full_path_directory = os.getcwd()
 org_nose_directory = "org_csv_nose_files"
 org_rump_directory = "org_csv_rump_files"
 nose_directory = "csv_nose_files"
