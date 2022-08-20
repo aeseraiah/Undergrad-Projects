@@ -59,7 +59,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     y2 = Ms21_values, Ms22_values, RC1_values, Rear5_values
 
     labels1 = ['single', 'combined']
-    labels2 = ['Ms21', 'Ms22', 'RC1', 'Rear5']
+    labels2 = ['R1', 'R2', 'R3', 'R4']
     labels3 = ['single', 'combined', 'individual_tracker_avg']
 
     figure1 = plt.figure(1)
