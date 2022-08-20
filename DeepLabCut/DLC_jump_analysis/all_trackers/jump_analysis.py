@@ -41,10 +41,10 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     single_values = dataframes_list[5]
 
     #Order of single trackers: Ms21, Ms22, RC1, Rear5
-    #Naming convention: Ms21 = R1, Ms22 = R2, RC1 = R3, Rear5 = R4, R = Rat
+    #Naming convention: Ms21 = Rat1 1, Ms22 = R2at , RC1 = Rat 3, Rear5 = Rat 4
   
 
-    w = .9 # bar width
+    w = .9
     x1 = [1, 2]
     x2 = [1, 2, 3, 4]
     x3 = [1, 2, 3]
@@ -59,11 +59,11 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     figure1 = plt.figure(1)
     plt.bar(x1,
            height=[np.mean(yi) for yi in y1],
-           yerr=[np.std(yi) for yi in y1],    # error bars
+           yerr=[np.std(yi) for yi in y1], # error bars
            capsize=12, # error bar cap width in points
-           width=w,    # bar width
+           width=w, # bar width
            tick_label=labels1,
-           color=(0,0,0,0),  # face color transparent
+           color=(0,0,0,0), # face color transparent
            edgecolor=['black'],
         )
     single_combined_bar_val=[np.mean(yi) for yi in y1]
@@ -101,11 +101,11 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     figure2 = plt.figure(2)
     plt.bar(x2,
            height=[np.mean(yi) for yi in y2],
-           yerr=[np.std(yi) for yi in y2],    # error bars
+           yerr=[np.std(yi) for yi in y2], # error bars
            capsize=12, # error bar cap width in points
-           width=w,    # bar width
+           width=w, # bar width
            tick_label=labels2,
-           color=(0,0,0,0),  # face color transparent
+           color=(0,0,0,0), # face color transparent
            edgecolor=['black'],
          )
 
@@ -119,6 +119,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     #RC1: Ms21, Ms22, Rear5
     #Rear5: Ms21, Ms22, RC1
 
+    #Marker for Individual Rats: 
     #circle marker = Ms21
     #square marker = Ms22
     #star marker = RC1
@@ -154,7 +155,6 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.title("Animal Model Performance")
     plt.xlabel("Individual Model")
     plt.ylabel("% of Jumps")
-
     legend()
     plt.savefig(fname2, dpi=100)
     plt.show()
@@ -242,10 +242,9 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.title("Animal Model Performance")
     plt.xlabel("Model")
     plt.ylabel("% of Jumps")
-       
     legend()
     plt.savefig(fname3, dpi=200)
     plt.show()
     plt.close()
 
-main(full_path_directory, nose_directory, "test-nose-results_single_combined.png", "nose-results_ind.png", "nose-results-all.png")#, "nose_results_2.png")
+main(full_path_directory, nose_directory, "nose_jumps_single_combined.png", "nose_jumps_inds.png", "nose_jumps_ind-avg.png")#, "nose_results_2.png")
