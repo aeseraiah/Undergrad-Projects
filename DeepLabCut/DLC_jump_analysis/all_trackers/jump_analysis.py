@@ -52,9 +52,9 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     y1 = single_values, combined_values
     y2 = Ms21_values, Ms22_values, RC1_values, Rear5_values
 
-    labels1 = ['single', 'combined']
-    labels2 = ['R1', 'R2', 'R3', 'R4']
-    labels3 = ['single', 'combined', 'individual_tracker_avg']
+    labels1 = ['Single', 'Combined']
+    labels2 = ['Rat 1', 'Rat 2', 'Rat 3', 'Rat 4']
+    labels3 = ['Single', 'Combined', 'Individual Model Avg']
 
     figure1 = plt.figure(1)
     plt.bar(x1,
@@ -139,8 +139,8 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.scatter(x2[3] + np.array([0.12, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, Rear5_tracker[10:15], color=colors[0], marker='*') #star marker = RC1
 
   
-    plt.title("Single Animal Model Performance")
-    plt.xlabel("Model")
+    plt.title("Animal Model Performance")
+    plt.xlabel("Individual Model")
     plt.ylabel("% of Jumps")
     plt.savefig(fname2, dpi=100)
     plt.show()
