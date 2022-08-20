@@ -34,20 +34,14 @@ def main(full_path, relative_path, fname1, fname2, fname3):
         dataframes_list.append(nose_values1)
 
     combined_values = dataframes_list[0]
-    #print("combined_values:\n", combined_values)
     Ms21_values = dataframes_list[1]
-    #print("Ms21_values:\n", Ms21_values)
     Ms22_values = dataframes_list[2]
-    #print("Ms22_values:\n", Ms22_values)
     RC1_values = dataframes_list[3]
-    #print("RC1_values:\n", RC1_values)
     Rear5_values = dataframes_list[4]
-    #print("Rear5_values:\n", Rear5_values)
     single_values = dataframes_list[5]
-    #print("single_values:\n", single_values)
 
     #Order of single trackers: Ms21, Ms22, RC1, Rear5
-    #Naming convention: Ms21 = Rat1, Ms22 = Rat2, RC1 = Rat3, Rear5 = Rat4
+    #Naming convention: Ms21 = R1, Ms22 = R2, RC1 = R3, Rear5 = R4, R = Rat
   
 
     w = .9 # bar width
@@ -77,7 +71,6 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
 
     for i in range(len(x1)):
-        #distribute scatter randomly across whole width of bar
         a = y1[i]
         plt.scatter(x1[i] + np.array([0.1, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, a[0:5], color=colors[1], marker='o') #circle marker = Ms21
         plt.scatter(x1[i] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, a[5:10], color=colors[1], marker = "s") #square marker = Ms22
@@ -146,7 +139,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.scatter(x2[3] + np.array([0.12, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, Rear5_tracker[10:15], color=colors[0], marker='*') #star marker = RC1
 
   
-    plt.title("Animal Model Performance")
+    plt.title("Single Animal Model Performance")
     plt.xlabel("Model")
     plt.ylabel("% of Jumps")
     plt.savefig(fname2, dpi=100)
@@ -226,7 +219,6 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     # print(array2)
 
     for i in range(len(x3)):
-        #distribute scatter randomly across whole width of bar
         a = y3[i]
         plt.scatter(x3[i] + np.array([0.1, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, a[0:5], color=colors[1], marker='o') #circle marker = Ms21
         plt.scatter(x3[i] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, a[5:10], color=colors[1], marker = "s") #square marker = Ms22
