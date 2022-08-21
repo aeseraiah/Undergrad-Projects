@@ -1,4 +1,5 @@
 import csv
+import pathlib
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.lines as mlines
@@ -8,13 +9,25 @@ import os
 
 #shows 3 graphs in total. First: single, combined. Second: 4 individual trackers. Third: single, combined, avg of 4 ind trackers
 
-#full_path_directory = "C:/Users/7teal/Coding Projects/Undergrad-Projects/DeepLabCut/DLC_jump_analysis/all_trackers/"
-full_path_directory = os.getcwd()
 org_nose_directory = "org_csv_nose_files"
 org_rump_directory = "org_csv_rump_files"
 nose_directory = "csv_nose_files"
 rump_directory = "csv_rump_files"
 
+full_path_directory = os.getcwd()
+nose_path = full_path_directory + '/' + nose_directory
+rump_path = full_path_directory + '/' + nose_directory
+
+is_noseDir= os.path.isdir(nose_path)
+print(is_noseDir)
+
+is_rumpDir= os.path.isdir(rump_path)
+print(is_rumpDir)
+
+if is_noseDir == False:
+    os.mkdir(nose_path)
+if is_rumpDir == False:
+    os.mkdir(rump_path)
 
 def main(full_path, relative_path, fname1, fname2, fname3):
     current_dir = os.getcwd()
@@ -27,19 +40,19 @@ def main(full_path, relative_path, fname1, fname2, fname3):
         file_count = len(files)
 
 
-    dataframes_list = []
+    jump_values = []
     for i in range(file_count):
-        temp_df = pd.read_csv(files[i])
-        nose_df1 = pd.DataFrame(temp_df)
-        nose_values1 = nose_df1.columns.values.astype(float)
-        dataframes_list.append(nose_values1)
+        read_csv = pd.read_csv(files[i])
+        all_dataframes = pd.DataFrame(read_csv)
+        column_values = all_dataframes.columns.values.astype(float)
+        jump_values.append(column_values)
 
-    combined_values = dataframes_list[0]
-    Ms21_values = dataframes_list[1]
-    Ms22_values = dataframes_list[2]
-    RC1_values = dataframes_list[3]
-    Rear5_values = dataframes_list[4]
-    single_values = dataframes_list[5]
+    combined_values = jump_values[0]
+    Ms21_values = jump_values[1]
+    Ms22_values = jump_values[2]
+    RC1_values = jump_values[3]
+    Rear5_values = jump_values[4]
+    single_values = jump_values[5]
 
     #Order of single trackers: Ms21, Ms22, RC1, Rear5
     #Naming convention: Ms21 = Rat1 1, Ms22 = R2at , RC1 = Rat 3, Rear5 = Rat 4
@@ -95,7 +108,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
     legend()
     plt.savefig(fname1, dpi=200)
-    plt.show()
+    #plt.show()
     plt.close()
 
 
@@ -158,7 +171,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.ylabel("% of Jumps")
     legend()
     plt.savefig(fname2, dpi=100)
-    plt.show()
+    #plt.show()
     plt.close()
 
 
@@ -245,7 +258,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.ylabel("% of Jumps")
     legend()
     plt.savefig(fname3, dpi=200)
-    plt.show()
+    #plt.show()
     plt.close()
 
 main(full_path_directory, nose_directory, "nose_jumps_single_combined.png", "nose_jumps_inds.png", "nose_jumps_ind-avg.png")#, "nose_results_2.png")
