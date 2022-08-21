@@ -15,19 +15,19 @@ nose_directory = "csv_nose_files"
 rump_directory = "csv_rump_files"
 
 full_path_directory = os.getcwd()
-nose_path = full_path_directory + '/' + nose_directory
-rump_path = full_path_directory + '/' + nose_directory
+# nose_path = full_path_directory + '/' + nose_directory
+# rump_path = full_path_directory + '/' + nose_directory
 
-is_noseDir= os.path.isdir(nose_path)
-print(is_noseDir)
+# is_noseDir= os.path.isdir(nose_path)
+# print(is_noseDir)
 
-is_rumpDir= os.path.isdir(rump_path)
-print(is_rumpDir)
+# is_rumpDir= os.path.isdir(rump_path)
+# print(is_rumpDir)
 
-if is_noseDir == False:
-    os.mkdir(nose_path)
-if is_rumpDir == False:
-    os.mkdir(rump_path)
+# if is_noseDir == False:
+#     os.mkdir(nose_path)
+# if is_rumpDir == False:
+#     os.mkdir(rump_path)
 
 def main(full_path, relative_path, fname1, fname2, fname3):
     current_dir = os.getcwd()
@@ -35,8 +35,8 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
     
     for root, dirs, files in os.walk(".", topdown=False):
-        for name in files:
-            print(os.path.join(root, name))
+        #for name in files:
+        #    print(os.path.join(root, name))
         file_count = len(files)
 
 
@@ -59,37 +59,37 @@ def main(full_path, relative_path, fname1, fname2, fname3):
   
 
     w = .9
-    x1 = [1, 2]
-    x2 = [1, 2, 3, 4]
-    x3 = [1, 2, 3]
+    x_fig1 = [1, 2]
+    x_fig2 = [1, 2, 3, 4]
+    x_fig3 = [1, 2, 3]
     colors = ['red', 'blue']
-    y1 = single_values, combined_values
-    y2 = Ms21_values, Ms22_values, RC1_values, Rear5_values
+    y_fig1 = single_values, combined_values
+    y_fig2 = Ms21_values, Ms22_values, RC1_values, Rear5_values
 
-    labels1 = ['Single', 'Combined']
-    labels2 = ['Rat 1', 'Rat 2', 'Rat 3', 'Rat 4']
-    labels3 = ['Single', 'Combined', 'Individual Model Avg']
+    labels_fig1 = ['Single', 'Combined']
+    labels_fig2 = ['Rat 1', 'Rat 2', 'Rat 3', 'Rat 4']
+    labels_fig3 = ['Single', 'Combined', 'Individual Model Avg']
 
     figure1 = plt.figure(1)
-    plt.bar(x1,
-           height=[np.mean(yi) for yi in y1],
-           yerr=[np.std(yi) for yi in y1], # error bars
+    plt.bar(x_fig1,
+           height=[np.mean(yi) for yi in y_fig1],
+           yerr=[np.std(yi) for yi in y_fig1], # error bars
            capsize=12, # error bar cap width in points
            width=w, # bar width
-           tick_label=labels1,
+           tick_label=labels_fig1,
            color=(0,0,0,0), # face color transparent
            edgecolor=['black'],
         )
-    single_combined_bar_val=[np.mean(yi) for yi in y1]
-    print("single_combined_bar_val:\n", single_combined_bar_val)
+    single_combined_avgs=[np.mean(yi) for yi in y_fig1]
+    print("single and combined avgs:\n", single_combined_avgs)
 
 
-    for i in range(len(x1)):
-        a = y1[i]
-        plt.scatter(x1[i] + np.array([0.1, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, a[0:5], color=colors[1], marker='o') #circle marker = Ms21
-        plt.scatter(x1[i] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, a[5:10], color=colors[1], marker = "s") #square marker = Ms22
-        plt.scatter(x1[i] + np.array([0.15, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, a[10:15], color=colors[0], marker = "*") #star marker = RC1
-        plt.scatter(x1[i] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, a[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
+    for i in range(len(x_fig1)):
+        a = y_fig1[i]
+        plt.scatter(x_fig1[i] + np.array([0.1, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, a[0:5], color=colors[1], marker='o') #circle marker = Ms21
+        plt.scatter(x_fig1[i] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, a[5:10], color=colors[1], marker = "s") #square marker = Ms22
+        plt.scatter(x_fig1[i] + np.array([0.15, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, a[10:15], color=colors[0], marker = "*") #star marker = RC1
+        plt.scatter(x_fig1[i] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, a[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
 
     os.chdir(current_dir + '/saved_figs')
 
@@ -113,19 +113,19 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
 
     figure2 = plt.figure(2)
-    plt.bar(x2,
-           height=[np.mean(yi) for yi in y2],
-           yerr=[np.std(yi) for yi in y2], # error bars
+    plt.bar(x_fig2,
+           height=[np.mean(yi) for yi in y_fig2],
+           yerr=[np.std(yi) for yi in y_fig2], # error bars
            capsize=12, # error bar cap width in points
            width=w, # bar width
-           tick_label=labels2,
+           tick_label=labels_fig2,
            color=(0,0,0,0), # face color transparent
            edgecolor=['black'],
          )
 
-    ind_tracker_values =[np.mean(yi) for yi in y2]
-    ind_trackers_avg = [np.mean(ind_tracker_values)]
-    #print("ind_trackers_avg:\n", ind_trackers_avg)
+    ind_tracker_avgs =[np.mean(yi) for yi in y_fig2]
+    ind_trackers_one_avg = [np.mean(ind_tracker_avgs)]
+    print("\nind trackers avgs:\n", ind_tracker_avgs)
 
     #csv order for ind trackers:
     #Ms21: Ms22, RC1, Rear5
@@ -139,31 +139,31 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     #star marker = RC1
     #triangle marker = Rear5
 
-    Ms21_tracker = y2[0]
-    Ms22_tracker = y2[1]
-    RC1_tracker = y2[2]
-    Rear5_tracker = y2[3]   
+    Ms21_tracker = y_fig2[0]
+    Ms22_tracker = y_fig2[1]
+    RC1_tracker = y_fig2[2]
+    Rear5_tracker = y_fig2[3]   
 
 
     #Ms21 Tracker:
-    plt.scatter(x2[0] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, Ms21_tracker[0:5], color=colors[1], marker='s') #square marker = Ms22
-    plt.scatter(x2[0] + np.array([0.12, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, Ms21_tracker[5:10], color=colors[0], marker='*') #star marker = RC1
-    plt.scatter(x2[0] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, Ms21_tracker[10:15], color=colors[0], marker='^') #triangle marker = Rear5
+    plt.scatter(x_fig2[0] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, Ms21_tracker[0:5], color=colors[1], marker='s') #square marker = Ms22
+    plt.scatter(x_fig2[0] + np.array([0.12, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, Ms21_tracker[5:10], color=colors[0], marker='*') #star marker = RC1
+    plt.scatter(x_fig2[0] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, Ms21_tracker[10:15], color=colors[0], marker='^') #triangle marker = Rear5
 
     #Ms22 Tracker:
-    plt.scatter(x2[1] + np.array([0.8, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, Ms22_tracker[0:5], color=colors[1], marker = "o") #circle marker = Ms21
-    plt.scatter(x2[1] + np.array([0.12, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, Ms22_tracker[5:10], color=colors[0], marker = "*") #star marker = RC1
-    plt.scatter(x2[1] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, Ms22_tracker[10:15], color=colors[0], marker='^') #triangle marker = Rear5
+    plt.scatter(x_fig2[1] + np.array([0.8, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, Ms22_tracker[0:5], color=colors[1], marker = "o") #circle marker = Ms21
+    plt.scatter(x_fig2[1] + np.array([0.12, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, Ms22_tracker[5:10], color=colors[0], marker = "*") #star marker = RC1
+    plt.scatter(x_fig2[1] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, Ms22_tracker[10:15], color=colors[0], marker='^') #triangle marker = Rear5
 
     #RC1 Tracker:
-    plt.scatter(x2[2] + np.array([0.8, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, RC1_tracker[0:5], color=colors[1], marker = "o") #circle marker = Ms21
-    plt.scatter(x2[2] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, RC1_tracker[5:10], color=colors[1], marker = "s") #square marker = Ms22
-    plt.scatter(x2[2] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, RC1_tracker[10:15], color=colors[0], marker='^') #triangle marker = Rear5      
+    plt.scatter(x_fig2[2] + np.array([0.8, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, RC1_tracker[0:5], color=colors[1], marker = "o") #circle marker = Ms21
+    plt.scatter(x_fig2[2] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, RC1_tracker[5:10], color=colors[1], marker = "s") #square marker = Ms22
+    plt.scatter(x_fig2[2] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, RC1_tracker[10:15], color=colors[0], marker='^') #triangle marker = Rear5      
 
     #Rear5 Tracker:
-    plt.scatter(x2[3] + np.array([0.8, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, Rear5_tracker[0:5], color=colors[1], marker = "o") #circle marker = Ms21
-    plt.scatter(x2[3] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, Rear5_tracker[5:10], color=colors[1], marker = "s") #square marker = Ms22
-    plt.scatter(x2[3] + np.array([0.12, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, Rear5_tracker[10:15], color=colors[0], marker='*') #star marker = RC1
+    plt.scatter(x_fig2[3] + np.array([0.8, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, Rear5_tracker[0:5], color=colors[1], marker = "o") #circle marker = Ms21
+    plt.scatter(x_fig2[3] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, Rear5_tracker[5:10], color=colors[1], marker = "s") #square marker = Ms22
+    plt.scatter(x_fig2[3] + np.array([0.12, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, Rear5_tracker[10:15], color=colors[0], marker='*') #star marker = RC1
 
   
     plt.title("Animal Model Performance")
@@ -224,34 +224,34 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
 
     #SINGLE, COMBINED, AND AVG GRAPH:
-    y3 = single_values, combined_values, final_avg_ind_trackers
+    y_fig3 = single_values, combined_values, final_avg_ind_trackers
     figure3 = plt.figure(3)
-    plt.bar(x3,
-        height=[np.mean(yi) for yi in y3],
-        yerr=[np.std(yi) for yi in y3],    # error bars
+    plt.bar(x_fig3,
+        height=[np.mean(yi) for yi in y_fig3],
+        yerr=[np.std(yi) for yi in y_fig3],    # error bars
         capsize=12, # error bar cap width in points
         width=w,    # bar width
-        tick_label=labels3,
+        tick_label=labels_fig3,
         color=(0,0,0,0),  # face color transparent
         edgecolor=['black'],
             )
 
     all_bar_val =[np.mean(final_avg_ind_trackers)]
-    print("\nfinal_avg_ind_trackers:\n", all_bar_val)
+    print("\nind trackers combined avg\n", all_bar_val)
 
     #Aligning videos analyzed on each tracker:
     # arr = np.random.RandomState(1111)
     # xb = arr.uniform(0,.95,5)
     # array = np.array(xb)
-    # array2 = np.sort(array)
-    # print(array2)
+    # array_fig2 = np.sort(array)
+    # print(array_fig2)
    
-    for i in range(len(x3)):
-        a = y3[i]
-        plt.scatter(x3[i] + np.array([0.1, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, a[0:5], color=colors[1], marker='o') #circle marker = Ms21
-        plt.scatter(x3[i] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, a[5:10], color=colors[1], marker = "s") #square marker = Ms22
-        plt.scatter(x3[i] + np.array([0.15, 0.4, 0.6, 0.7, 0.9]) * w - w / 2, a[10:15], color=colors[0], marker = "*") #star marker = RC1
-        plt.scatter(x3[i] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, a[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
+    for i in range(len(x_fig3)):
+        a = y_fig3[i]
+        plt.scatter(x_fig3[i] + np.array([0.1, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, a[0:5], color=colors[1], marker='o') #circle marker = Ms21
+        plt.scatter(x_fig3[i] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, a[5:10], color=colors[1], marker = "s") #square marker = Ms22
+        plt.scatter(x_fig3[i] + np.array([0.15, 0.4, 0.6, 0.7, 0.9]) * w - w / 2, a[10:15], color=colors[0], marker = "*") #star marker = RC1
+        plt.scatter(x_fig3[i] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, a[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
 
     plt.title("Animal Model Performance")
     plt.xlabel("Model")
