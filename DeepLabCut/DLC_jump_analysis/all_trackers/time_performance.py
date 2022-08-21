@@ -7,15 +7,17 @@ import os
 def time_per(fname1, fname2):
     w = .9
     x = [1, 2, 3, 4, 5]
-    one_animal_model = np.array([.07, 1, .07, 2.5, 3.6]) #time of steps for single model construction
+    #one_animal_model = np.array([.07, 1, .07, 2.5, 3.6]) #time of steps for single model construction (10 vids)
+    #combined_animal_model = np.array([.11, 1, .11, 2.5, 3.72]) #16 vids for combined model
+    one_animal_model = np.array([.08, 1, .08, 2.5, 3.7]) #12 vids for single model 
     colors = ['blue', 'red', 'green', 'orange', 'purple']
-    #labeling: 10 min/vid --> 100 min (10 vids) --> 1.7 hrs --> .07 days
+    #labeling: 10 min/vid --> 120 min (12 vids) --> 2 hrs --> .08 days
     #initial training: 1440 min = 24 hrs training --> 1 day
-    #refine/extract outlier frames: 10 min/vid --> 100 min (10 vids) --> 1.7 hrs --> .07 days
+    #refine/extract outlier frames: 10 min/vid --> 120 min (12 vids) --> 2 hrs --> .08 days
     #final training: 3600 --> 60 hrs -->  2.5 days
-    #total time: 87.4 hrs --> 3.6 days
+    #total time: 3.7 days
 
-    #(3.6 days x 24 hrs/day) / (6 hrs/day) = 14 days
+    #(3.7 days x 24 hrs/day) / (6 hrs/day) = 14 days
 
     #First graph: Steps and time involved in constructing a single model 
     plt.bar(x, 
@@ -26,7 +28,7 @@ def time_per(fname1, fname2):
            edgecolor=colors,
            )
 
-    plt.title("Model Time (10 videos)")
+    plt.title("Model Time (10 training videos)")
     plt.xlabel("Steps")
     plt.ylabel("time (days)")
 
@@ -43,9 +45,10 @@ def time_per(fname1, fname2):
     total_time_one_animal = one_animal_model[4]
     two_animal_models = np.multiply(total_time_one_animal, 2)
     three_animal_models = np.multiply(total_time_one_animal, 3)
+    three_animal_models_rounded = np.round(three_animal_models)
     four_animal_models = np.multiply(total_time_one_animal, 4)
     five_animal_models = np.multiply(total_time_one_animal, 5)
-    y = total_time_one_animal, two_animal_models, three_animal_models, four_animal_models, five_animal_models
+    y = total_time_one_animal, two_animal_models, three_animal_models_rounded, four_animal_models, five_animal_models
 
     plt.plot(x, y, marker='o')
     plt.xticks(np.arange(min(x), max(x)+1, 1.0), ['1/combined', '2', '3', '4', '5'])
@@ -54,7 +57,7 @@ def time_per(fname1, fname2):
        plt.text(i+.1, j-.2, '({})'.format(j))
 
 
-    plt.title("Model Time (10 videos)")
+    plt.title("Model Time (10 training videos)")
     plt.xlabel("# of animals/models")
     plt.ylabel("time (days)")
     figure = plt.gcf()
