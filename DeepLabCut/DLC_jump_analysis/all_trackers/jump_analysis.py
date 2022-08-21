@@ -100,9 +100,11 @@ def main(full_path, relative_path, fname1, fname2, fname3):
         box = ax.get_position()
         ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
 
-        ax.legend(["Rat 1: Male (18-25 months)", "Rat 2: Male (16-20 months)", "Rat 3: Female (10-14 months)", "Rat 4: Female (4-7 months)"], bbox_to_anchor=(1.04, 0.5), loc="best", borderaxespad=0)
+        ax.legend(["Rat 1: Male, 18-25 months", "Rat 2: Male, 16-20 months", "Rat 3: Female, 10-14 months", "Rat 4: Female, 4-7 months"], bbox_to_anchor=(1.04, 1), borderaxespad=0)
 
     legend()
+    figure = plt.gcf()
+    figure.set_size_inches(13, 6)
     plt.savefig(fname1, dpi=200)
     plt.show()
     plt.close()
@@ -166,6 +168,8 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.xlabel("Individual Model")
     plt.ylabel("% of Jumps")
     legend()
+    figure = plt.gcf()
+    figure.set_size_inches(13, 6)
     plt.savefig(fname2, dpi=100)
     plt.show()
     plt.close()
@@ -253,6 +257,9 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.xlabel("Model")
     plt.ylabel("% of Jumps")
     legend()
+
+    figure = plt.gcf()
+    figure.set_size_inches(13, 6)
     plt.savefig(fname3, dpi=200)
     plt.show()
     plt.close()
