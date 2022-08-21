@@ -225,6 +225,8 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
     #SINGLE, COMBINED, AND AVG GRAPH:
     y_fig3 = single_values, combined_values, final_avg_ind_trackers
+    plt.rcParams["figure.figsize"] = (13,6)
+
     figure3 = plt.figure(3)
     plt.bar(x_fig3,
         height=[np.mean(yi) for yi in y_fig3],
@@ -258,8 +260,8 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.ylabel("% of Jumps")
     legend()
 
-    figure = plt.gcf()
-    figure.set_size_inches(13, 6)
+    #figure = plt.gcf()
+    #figure.set_size_inches(13, 6)
     plt.savefig(fname3, dpi=200)
     plt.show()
     plt.close()
