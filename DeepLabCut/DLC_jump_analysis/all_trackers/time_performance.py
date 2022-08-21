@@ -47,23 +47,20 @@ def time_per(fname1, fname2):
     five_animal_models = np.multiply(total_time_one_animal, 5)
     y = total_time_one_animal, two_animal_models, three_animal_models, four_animal_models, five_animal_models
 
-    fig, ax = plt.subplots()
-    ax.plot(x, y, marker='o')
-    ax.set_xticklabels(['1/combined', '2', '3', '4', '5'])
-    plt.xticks(np.arange(min(x), max(x)+1, 1.0))
+    plt.plot(x, y, marker='o')
+    plt.xticks(np.arange(min(x), max(x)+1, 1.0), ['1/combined', '2', '3', '4', '5'])
     
     for i, j in zip(x, y):
        plt.text(i+.1, j-.2, '({})'.format(j))
 
-    current_dir = os.getcwd()
+
     plt.title("Model Time (10 videos)")
     plt.xlabel("# of animals/models")
     plt.ylabel("time (days)")
-    #os.chdir(current_dir + '/saved_figs')
     figure = plt.gcf()
-    figure.set_size_inches(10, 6)
+    figure.set_size_inches(8, 6)
     plt.savefig(fname2, dpi=100)
     plt.show()
     plt.close()
 
-time_per("time_steps.png", "time_per.png")
+time_per("time_steps.png", "time_multiple_models.png")
