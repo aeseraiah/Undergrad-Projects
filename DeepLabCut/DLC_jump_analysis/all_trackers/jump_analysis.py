@@ -66,6 +66,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     labels_fig2 = ['Rat 1', 'Rat 2', 'Rat 3', 'Rat 4']
     labels_fig3 = ['Single', 'Combined', 'Individual Model Avg']
 
+    plt.rcParams["figure.figsize"] = (13,6)
     figure1 = plt.figure(1)
     plt.bar(x_fig1,
            height=[np.mean(yi) for yi in y_fig1],
@@ -103,13 +104,11 @@ def main(full_path, relative_path, fname1, fname2, fname3):
         ax.legend(["Rat 1: Male, 18-25 months", "Rat 2: Male, 16-20 months", "Rat 3: Female, 10-14 months", "Rat 4: Female, 4-7 months"], bbox_to_anchor=(1.04, 1), borderaxespad=0)
 
     legend()
-    figure = plt.gcf()
-    figure.set_size_inches(13, 6)
     plt.savefig(fname1, dpi=200)
     plt.show()
     plt.close()
 
-
+    plt.rcParams["figure.figsize"] = (13,6)
     figure2 = plt.figure(2)
     plt.bar(x_fig2,
            height=[np.mean(yi) for yi in y_fig2],
@@ -168,8 +167,6 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.xlabel("Individual Model")
     plt.ylabel("% of Jumps")
     legend()
-    figure = plt.gcf()
-    figure.set_size_inches(13, 6)
     plt.savefig(fname2, dpi=100)
     plt.show()
     plt.close()
@@ -259,9 +256,6 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.xlabel("Model")
     plt.ylabel("% of Jumps")
     legend()
-
-    #figure = plt.gcf()
-    #figure.set_size_inches(13, 6)
     plt.savefig(fname3, dpi=200)
     plt.show()
     plt.close()
