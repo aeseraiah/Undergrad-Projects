@@ -8,9 +8,9 @@ import os
 y = np.array([.07, 1, .07, 2.5, 3.6])
  
 def time_details(fname):
-    w = .9 # bar width
-    x = [1, 2, 3, 4, 5] # x-coordinates of your bars
-    colors = ['blue', 'red', 'green', 'orange', 'purple']    # corresponding colors
+    w = .9
+    x = [1, 2, 3, 4, 5]
+    colors = ['blue', 'red', 'green', 'orange', 'purple']
     #labeling: 10 min/vid --> 100 min (10 vids) --> 1.7 hrs --> .07 days
     #initial training: 1440 min = 24 hrs training --> 1 day
     #refine/extract outlier frames: 10 min/vid --> 100 min (10 vids) --> 1.7 hrs --> .07 days
@@ -27,43 +27,25 @@ def time_details(fname):
     fig, ax = plt.subplots()
     ax.bar(x,
            height=[np.mean(yi) for yi in y],
-           yerr=[np.std(yi) for yi in y],    # error bars
-           capsize=12, # error bar cap width in points
-           width=w,    # bar width
+           yerr=[np.std(yi) for yi in y], 
+           capsize=12, 
+           width=w,
            tick_label=["labeling", "initial training", "refining/extracting", "final training", "total"],
-           color=(0,0,0,0),  # face color transparent
+           color=(0,0,0,0),
            edgecolor=colors,
-         #ecolor=colors,    # error bar colors; setting this raises an error for whatever reason.
          )
-
-    # for i in range(len(x)):
-    #     #distribute scatter randomly across whole width of bar
-    #     a = y[i]
-    #     ax.scatter(x[i] + np.random.random(a[0:5].size) * w - w / 2, a[0:5], color=colors[i], marker='.')
-    #     ax.scatter(x[i] + np.random.random(a[5:10].size) * w - w / 2, a[5:10], color=colors[i], marker = "s")
-
-
-    # box = ax.get_position()
-    # ax.set_position([box.x0, box.y0 + box.height * 0.1,
-    #                 box.width, box.height * 0.9])
-
-    # # Put a legend below current axis
-    # ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05),
-    #         fancybox=True, shadow=True, ncol=5)
 
     
     plt.title("Step Time (10 videos)")
     plt.xlabel("Steps")
     plt.ylabel("time (days)")
-    #plt.legend(['x = x'],bbox_to_anchor =(0.65, 1.25), loc='lower center')
-    
-
     current_dir = os.getcwd()
     os.chdir(current_dir + '/saved_figs')
     figure = plt.gcf()
     figure.set_size_inches(10, 6)
     plt.savefig(fname, dpi=100)
     plt.show()
+    plt.close()
 
 
-#time_details("time_steps.png")
+time_details("time_steps.png")
