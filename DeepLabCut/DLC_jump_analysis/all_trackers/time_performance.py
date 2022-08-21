@@ -26,7 +26,7 @@ def time_per(fname1, fname2):
            edgecolor=colors,
            )
 
-    plt.title("Model Time")
+    plt.title("Model Time (10 videos)")
     plt.xlabel("Steps")
     plt.ylabel("time (days)")
 
