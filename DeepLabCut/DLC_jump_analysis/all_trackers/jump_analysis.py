@@ -62,9 +62,9 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     x_fig1 = [1, 2]
     x_fig2 = [1, 2, 3, 4]
     x_fig3 = [1, 2, 3]
-    colors = ['red', 'blue']
     y_fig1 = single_values, combined_values
     y_fig2 = Ms21_values, Ms22_values, RC1_values, Rear5_values
+    colors = ['red', 'blue'] #female or male 
 
     labels_fig1 = ['Single', 'Combined']
     labels_fig2 = ['Rat 1', 'Rat 2', 'Rat 3', 'Rat 4']
@@ -85,11 +85,11 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
 
     for i in range(len(x_fig1)):
-        a = y_fig1[i]
-        plt.scatter(x_fig1[i] + np.array([0.1, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, a[0:5], color=colors[1], marker='o') #circle marker = Ms21
-        plt.scatter(x_fig1[i] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, a[5:10], color=colors[1], marker = "s") #square marker = Ms22
-        plt.scatter(x_fig1[i] + np.array([0.15, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, a[10:15], color=colors[0], marker = "*") #star marker = RC1
-        plt.scatter(x_fig1[i] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, a[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
+        y = y_fig1[i]
+        plt.scatter(x_fig1[i] + np.array([0.1, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, y[0:5], color=colors[1], marker='o') #circle marker = Ms21
+        plt.scatter(x_fig1[i] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, y[5:10], color=colors[1], marker = "s") #square marker = Ms22
+        plt.scatter(x_fig1[i] + np.array([0.15, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, y[10:15], color=colors[0], marker = "*") #star marker = RC1
+        plt.scatter(x_fig1[i] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, y[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
 
     os.chdir(current_dir + '/saved_figs')
 
@@ -108,7 +108,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
     legend()
     plt.savefig(fname1, dpi=200)
-    #plt.show()
+    plt.show()
     plt.close()
 
 
@@ -171,11 +171,11 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.ylabel("% of Jumps")
     legend()
     plt.savefig(fname2, dpi=100)
-    #plt.show()
+    plt.show()
     plt.close()
 
 
-    #FINDING AVERAGES OF 5 VIDEOS (FROM EACH ANIMAL) ANALYZED WITH ALL 4 INDIVIDUAL TRACKERS:
+    #FINDING AVERAGES OF 5 VIDEOS (FROM EACH ANIMAL) ANALyZED WITH ALL 4 INDIVIDUAL TRACKERS:
 
     #MS21 VIDEOS:
     Ms21_first_vid = (np.mean(Ms22_tracker[0]) + np.mean(RC1_tracker[0]) + np.mean(Rear5_tracker[0])) / 3
@@ -247,18 +247,18 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     # print(array_fig2)
    
     for i in range(len(x_fig3)):
-        a = y_fig3[i]
-        plt.scatter(x_fig3[i] + np.array([0.1, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, a[0:5], color=colors[1], marker='o') #circle marker = Ms21
-        plt.scatter(x_fig3[i] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, a[5:10], color=colors[1], marker = "s") #square marker = Ms22
-        plt.scatter(x_fig3[i] + np.array([0.15, 0.4, 0.6, 0.7, 0.9]) * w - w / 2, a[10:15], color=colors[0], marker = "*") #star marker = RC1
-        plt.scatter(x_fig3[i] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, a[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
+        y = y_fig3[i]
+        plt.scatter(x_fig3[i] + np.array([0.1, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, y[0:5], color=colors[1], marker='o') #circle marker = Ms21
+        plt.scatter(x_fig3[i] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, y[5:10], color=colors[1], marker = "s") #square marker = Ms22
+        plt.scatter(x_fig3[i] + np.array([0.15, 0.4, 0.6, 0.7, 0.9]) * w - w / 2, y[10:15], color=colors[0], marker = "*") #star marker = RC1
+        plt.scatter(x_fig3[i] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, y[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
 
     plt.title("Animal Model Performance")
     plt.xlabel("Model")
     plt.ylabel("% of Jumps")
     legend()
     plt.savefig(fname3, dpi=200)
-    #plt.show()
+    plt.show()
     plt.close()
 
 main(full_path_directory, nose_directory, "nose_jumps_single_combined.png", "nose_jumps_inds.png", "nose_jumps_ind-avg.png")#, "nose_results_2.png")
