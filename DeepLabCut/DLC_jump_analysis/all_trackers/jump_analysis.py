@@ -257,4 +257,5 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.show()
     plt.close()
 
-main(full_path_directory, nose_directory, "nose_jumps_single_combined.png", "nose_jumps_inds.png", "nose_jumps_ind-avg.png")#, "nose_results_2.png")
+main(full_path_directory, nose_directory, "nose_jumps_single_combined.png", "nose_jumps_inds.png", "nose_jumps_ind-avg.png")
+#main(full_path_directory, rump_directory, "rump_jumps_single_combined.png", "rump_jumps_inds.png", "rump_jumps_ind-avg.png")
