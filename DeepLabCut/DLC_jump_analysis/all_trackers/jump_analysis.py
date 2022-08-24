@@ -64,7 +64,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
     labels_fig1 = ['Single', 'Combined']
     labels_fig2 = ['Rat 1', 'Rat 2', 'Rat 3', 'Rat 4']
-    labels_fig3 = ['Single', 'Combined', 'Individual Model Avg']
+    labels_fig3 = ['Single', 'Combined', 'Ind Avg']
 
     plt.rcParams["figure.figsize"] = (13,6)
     figure1 = plt.figure(1)
@@ -83,7 +83,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
     for i in range(len(x_fig1)):
         y = y_fig1[i]
-        plt.scatter(x_fig1[i] + np.array([0.1, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, y[0:5], color=colors[1], marker='o') #circle marker = Ms21
+        plt.scatter(x_fig1[i] + np.array([0.1, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, y[0:5], color=colors[1], marker='.') #circle marker = Ms21
         plt.scatter(x_fig1[i] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, y[5:10], color=colors[1], marker = "s") #square marker = Ms22
         plt.scatter(x_fig1[i] + np.array([0.15, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, y[10:15], color=colors[0], marker = "*") #star marker = RC1
         plt.scatter(x_fig1[i] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, y[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
@@ -148,17 +148,18 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.scatter(x_fig2[0] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, Ms21_tracker[10:15], color=colors[0], marker='^') #triangle marker = Rear5
 
     #Ms22 Tracker:
-    plt.scatter(x_fig2[1] + np.array([0.8, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, Ms22_tracker[0:5], color=colors[1], marker = "o") #circle marker = Ms21
-    plt.scatter(x_fig2[1] + np.array([0.12, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, Ms22_tracker[5:10], color=colors[0], marker = "*") #star marker = RC1
+    plt.scatter(x_fig2[1] + np.array([0.08, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, Ms22_tracker[0:5], color=colors[1], marker = ".") #circle marker = Ms21
+    plt.scatter(x_fig2[1] + np.array([0.2, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, Ms22_tracker[5:10], color=colors[0], marker = "*") #star marker = RC1
     plt.scatter(x_fig2[1] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, Ms22_tracker[10:15], color=colors[0], marker='^') #triangle marker = Rear5
 
     #RC1 Tracker:
-    plt.scatter(x_fig2[2] + np.array([0.8, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, RC1_tracker[0:5], color=colors[1], marker = "o") #circle marker = Ms21
+    plt.scatter(x_fig2[2] + np.array([0.1, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, RC1_tracker[0:5], color=colors[1], marker = ".") #circle marker = Ms21
     plt.scatter(x_fig2[2] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, RC1_tracker[5:10], color=colors[1], marker = "s") #square marker = Ms22
     plt.scatter(x_fig2[2] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, RC1_tracker[10:15], color=colors[0], marker='^') #triangle marker = Rear5      
 
     #Rear5 Tracker:
-    plt.scatter(x_fig2[3] + np.array([0.8, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, Rear5_tracker[0:5], color=colors[1], marker = "o") #circle marker = Ms21
+    #made changes to first line: .7, .9
+    plt.scatter(x_fig2[3] + np.array([0.08, 0.3, 0.5, 0.8, 0.95]) * w - w / 2, Rear5_tracker[0:5], color=colors[1], marker = ".") #circle marker = Ms21
     plt.scatter(x_fig2[3] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, Rear5_tracker[5:10], color=colors[1], marker = "s") #square marker = Ms22
     plt.scatter(x_fig2[3] + np.array([0.12, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, Rear5_tracker[10:15], color=colors[0], marker='*') #star marker = RC1
 
@@ -247,7 +248,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
    
     for i in range(len(x_fig3)):
         y = y_fig3[i]
-        plt.scatter(x_fig3[i] + np.array([0.1, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, y[0:5], color=colors[1], marker='o') #circle marker = Ms21
+        plt.scatter(x_fig3[i] + np.array([0.1, 0.3, 0.5, 0.7, 0.9]) * w - w / 2, y[0:5], color=colors[1], marker='.') #circle marker = Ms21
         plt.scatter(x_fig3[i] + np.array([0.05, 0.25, 0.4, 0.6, 0.8]) * w - w / 2, y[5:10], color=colors[1], marker = "s") #square marker = Ms22
         plt.scatter(x_fig3[i] + np.array([0.15, 0.4, 0.6, 0.7, 0.9]) * w - w / 2, y[10:15], color=colors[0], marker = "*") #star marker = RC1
         plt.scatter(x_fig3[i] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, y[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
@@ -260,5 +261,5 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.show()
     plt.close()
 
-main(full_path_directory, nose_directory, "nose_jumps_single_combined.png", "nose_jumps_inds.png", "nose_jumps_ind-avg.png")
-#main(full_path_directory, rump_directory, "rump_jumps_single_combined.png", "rump_jumps_inds.png", "rump_jumps_ind-avg.png")
+#main(full_path_directory, nose_directory, "nose_jumps_single_combined.png", "nose_jumps_inds.png", "nose_jumps_ind-avg.png")
+main(full_path_directory, rump_directory, "rump_jumps_single_combined.png", "rump_jumps_inds.png", "rump_jumps_ind-avg.png")
