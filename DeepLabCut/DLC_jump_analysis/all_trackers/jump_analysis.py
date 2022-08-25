@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+from scipy import stats
 
 #shows 3 graphs in total. First: single, combined. Second: 4 individual trackers. Third: single, combined, avg of 4 ind trackers
 
@@ -261,5 +262,8 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.show()
     plt.close()
 
-#main(full_path_directory, nose_directory, "nose_jumps_single_combined.png", "nose_jumps_inds.png", "nose_jumps_ind-avg.png")
-main(full_path_directory, rump_directory, "rump_jumps_single_combined.png", "rump_jumps_inds.png", "rump_jumps_ind-avg.png")
+    #print(single_values, combined_values)
+
+
+main(full_path_directory, nose_directory, "nose_jumps_single_combined.png", "nose_jumps_inds.png", "nose_jumps_ind-avg.png")
+#main(full_path_directory, rump_directory, "rump_jumps_single_combined.png", "rump_jumps_inds.png", "rump_jumps_ind-avg.png")
