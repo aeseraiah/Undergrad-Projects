@@ -173,10 +173,8 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.show()
     plt.close()
 
-    test = np.mean([(Ms22_tracker[0]), (RC1_tracker[0]), (Rear5_tracker[0])])
-    print("test:\n", test)
 
-    #FINDING AVERAGES OF 5 VIDEOS (FROM EACH ANIMAL) ANALyZED WITH ALL 4 INDIVIDUAL TRACKERS:
+    #FINDING AVERAGES OF 5 VIDEOS (FROM EACH ANIMAL) ANALYZED WITH ALL 4 INDIVIDUAL TRACKERS:
 
     #MS21 VIDEOS:
     Ms21_first_vid = np.mean([(Ms22_tracker[0]), (RC1_tracker[0]), (Rear5_tracker[0])])
