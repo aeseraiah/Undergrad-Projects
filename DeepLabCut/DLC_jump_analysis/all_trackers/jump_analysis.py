@@ -189,30 +189,30 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
 
     #MS22 VIDEOS:
-    Ms22_first_vid = np.mean([(Ms21_tracker[0]) + (RC1_tracker[6]) + (Rear5_tracker[6])])
-    Ms22_second_vid = np.mean([(Ms21_tracker[1]) + (RC1_tracker[7]) + (Rear5_tracker[7])])
-    Ms22_third_vid = np.mean([(Ms21_tracker[2]) + (RC1_tracker[8]) + (Rear5_tracker[8])])
-    Ms22_fourth_vid = np.mean([(Ms21_tracker[3]) + (RC1_tracker[9]) + (Rear5_tracker[9])])
-    Ms22_fifth_vid = np.mean([(Ms21_tracker[4]) + (RC1_tracker[10]) + (Rear5_tracker[10])])
+    Ms22_first_vid = np.mean([(Ms21_tracker[0]), (RC1_tracker[6]), (Rear5_tracker[6])])
+    Ms22_second_vid = np.mean([(Ms21_tracker[1]), (RC1_tracker[7]), (Rear5_tracker[7])])
+    Ms22_third_vid = np.mean([(Ms21_tracker[2]), (RC1_tracker[8]), (Rear5_tracker[8])])
+    Ms22_fourth_vid = np.mean([(Ms21_tracker[3]), (RC1_tracker[9]), (Rear5_tracker[9])])
+    Ms22_fifth_vid = np.mean([(Ms21_tracker[4]), (RC1_tracker[10]), (Rear5_tracker[10])])
 
     Ms22_avg_five_vids = [Ms22_first_vid,  Ms22_second_vid, Ms22_third_vid, Ms22_fourth_vid, Ms22_fifth_vid]
 
     #RC1 VIDEOS:
-    RC1_first_vid = np.mean([(Ms21_tracker[6]) + (Ms22_tracker[6]) + (Rear5_tracker[10])])
-    RC1_second_vid = np.mean([(Ms21_tracker[7]) + (Ms22_tracker[7]) + (Rear5_tracker[11])])
-    RC1_third_vid = np.mean([(Ms21_tracker[8]) + (Ms22_tracker[8]) + (Rear5_tracker[12])])
-    RC1_fourth_vid = np.mean([(Ms21_tracker[9]) + (Ms22_tracker[9]) + (Rear5_tracker[13])])
-    RC1_fifth_vid = np.mean([(Ms21_tracker[10]) + (Ms22_tracker[10]) + (Rear5_tracker[14])])
+    RC1_first_vid = np.mean([(Ms21_tracker[6]), (Ms22_tracker[6]), (Rear5_tracker[10])])
+    RC1_second_vid = np.mean([(Ms21_tracker[7]), (Ms22_tracker[7]), (Rear5_tracker[11])])
+    RC1_third_vid = np.mean([(Ms21_tracker[8]), (Ms22_tracker[8]), (Rear5_tracker[12])])
+    RC1_fourth_vid = np.mean([(Ms21_tracker[9]), (Ms22_tracker[9]), (Rear5_tracker[13])])
+    RC1_fifth_vid = np.mean([(Ms21_tracker[10]), (Ms22_tracker[10]), (Rear5_tracker[14])])
 
     RC1_avg_five_vids = [RC1_first_vid,  RC1_second_vid, RC1_third_vid, RC1_fourth_vid, RC1_fifth_vid]
 
 
     #REAR5 VIDEOS:
-    Rear5_first_vid = np.mean([(Ms21_tracker[10]) + (Ms22_tracker[10]) + (RC1_tracker[10])])
-    Rear5_second_vid = np.mean([(Ms21_tracker[11]) + (Ms22_tracker[11]) + (RC1_tracker[11])])
-    Rear5_third_vid = np.mean([(Ms21_tracker[12]) + (Ms22_tracker[12]) + (RC1_tracker[12])])
-    Rear5_fourth_vid = np.mean([(Ms21_tracker[13]) + (Ms22_tracker[13]) + (RC1_tracker[13])])
-    Rear5_fifth_vid = np.mean([(Ms21_tracker[14]) + (Ms22_tracker[14]) + (RC1_tracker[14])])
+    Rear5_first_vid = np.mean([(Ms21_tracker[10]), (Ms22_tracker[10]), (RC1_tracker[10])])
+    Rear5_second_vid = np.mean([(Ms21_tracker[11]), (Ms22_tracker[11]), (RC1_tracker[11])])
+    Rear5_third_vid = np.mean([(Ms21_tracker[12]), (Ms22_tracker[12]), (RC1_tracker[12])])
+    Rear5_fourth_vid = np.mean([(Ms21_tracker[13]), (Ms22_tracker[13]), (RC1_tracker[13])])
+    Rear5_fifth_vid = np.mean([(Ms21_tracker[14]), (Ms22_tracker[14]), (RC1_tracker[14])])
 
     Rear5_avg_five_vids = [Rear5_first_vid,  Rear5_second_vid, Rear5_third_vid, Rear5_fourth_vid, Rear5_fifth_vid]
 
