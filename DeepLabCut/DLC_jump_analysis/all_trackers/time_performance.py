@@ -28,7 +28,7 @@ def time_per(fname1, fname2):
            edgecolor=colors,
            )
 
-    plt.title("Model Time (10 training videos)")
+    plt.title("Model Time (12 training videos)")
     plt.xlabel("Steps")
     plt.ylabel("time (days)")
 
@@ -57,7 +57,7 @@ def time_per(fname1, fname2):
        plt.text(i+.1, j-.2, '({})'.format(j))
 
 
-    plt.title("Model Time (10 training videos)")
+    plt.title("Model Time (12 training videos)")
     plt.xlabel("# of animals/models")
     plt.ylabel("time (days)")
     figure = plt.gcf()

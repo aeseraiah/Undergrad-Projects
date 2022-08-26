@@ -52,7 +52,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     single_values = jump_values[5]
 
     #Order of single trackers: Ms21, Ms22, RC1, Rear5
-    #Naming convention: Ms21 = Rat1 1, Ms22 = R2at , RC1 = Rat 3, Rear5 = Rat 4
+    #Naming convention: Ms21 = Rat1 1, Ms22 = Rat 2 , RC1 = Rat 3, Rear5 = Rat 4
   
 
     w = .9
