@@ -2,7 +2,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import os
-from scipy import stats
 
 #shows 3 graphs in total. First: single, combined. Second: 4 individual trackers. Third: single, combined, avg of 4 ind trackers
 
@@ -91,6 +90,8 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
     os.chdir(current_dir + '/saved_figs')
 
+
+    plt.ylim(0, 30)
     plt.title("Animal Model Performance")
     plt.xlabel("Model")
     plt.ylabel("% of Jumps")
@@ -104,7 +105,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
         ax.legend(["Rat 1: Male, 18-25 months", "Rat 2: Male, 16-20 months", "Rat 3: Female, 10-14 months", "Rat 4: Female, 4-7 months"], bbox_to_anchor=(1.04, 1), borderaxespad=0)
 
-    legend()
+    #legend()
     plt.savefig(fname1, dpi=200)
     plt.show()
     plt.close()
@@ -165,10 +166,11 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     plt.scatter(x_fig2[3] + np.array([0.12, 0.4, 0.5, 0.7, 0.9]) * w - w / 2, Rear5_tracker[10:15], color=colors[0], marker='*') #star marker = RC1
 
   
+    plt.ylim(0, 30)
     plt.title("Animal Model Performance")
     plt.xlabel("Individual Model")
     plt.ylabel("% of Jumps")
-    legend()
+    #legend()
     plt.savefig(fname2, dpi=100)
     plt.show()
     plt.close()
@@ -252,10 +254,11 @@ def main(full_path, relative_path, fname1, fname2, fname3):
         plt.scatter(x_fig3[i] + np.array([0.15, 0.4, 0.6, 0.7, 0.9]) * w - w / 2, y[10:15], color=colors[0], marker = "*") #star marker = RC1
         plt.scatter(x_fig3[i] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, y[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
 
+    plt.ylim(0, 30)
     plt.title("Animal Model Performance")
     plt.xlabel("Model")
     plt.ylabel("% of Jumps")
-    legend()
+    #legend()
     plt.savefig(fname3, dpi=200)
     plt.show()
     plt.close()
