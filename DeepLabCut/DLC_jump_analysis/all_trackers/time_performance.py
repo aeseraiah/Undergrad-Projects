@@ -30,7 +30,7 @@ def time_per(fname1, fname2):
            )
 
     plt.grid(color='grey', linestyle='-', linewidth=.1, axis='y')
-    plt.title("Model Time (12 training videos)")
+    #plt.title("Model Time (12 training videos)")
     plt.xlabel("Steps")
     plt.ylabel("time (days)")
 
@@ -64,7 +64,7 @@ def time_per(fname1, fname2):
 
     plt.grid(color='grey', linestyle='-', linewidth=.1)
     plt.ylim(0,20)
-    plt.title("Model Time (12 training videos)")
+    #plt.title("Model Time (12 training videos)")
     plt.xlabel("Num. of rats")
     plt.ylabel("Analysis time (days)")
     figure = plt.gcf()

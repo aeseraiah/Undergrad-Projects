@@ -235,7 +235,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
         tick_label=labels_fig3,
         color=(0,0,0,0),  # face color transparent
         edgecolor=['black'],
-        zorder=1
+        zorder=3
             )
 
     all_bar_val =[np.mean(final_avg_ind_trackers)]
@@ -256,7 +256,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
         plt.scatter(x_fig3[i] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, y[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
 
 
-    plt.grid(color='grey', linestyle='-', linewidth=.1, axis='y')
+    plt.grid(color='grey', linestyle='-', linewidth=.1, axis='y', zorder=0)
     plt.ylim(0, 30)
     plt.title("Animal Model Performance")
     plt.xlabel("Model")
