@@ -26,8 +26,10 @@ def time_per(fname1, fname2):
            tick_label=["labeling", "initial training", "refining/extracting", "final training", "total"],
            color=colors,
            edgecolor=colors,
+           zorder=3
            )
 
+    plt.grid(color='grey', linestyle='-', linewidth=.1, axis='y')
     plt.title("Model Time (12 training videos)")
     plt.xlabel("Steps")
     plt.ylabel("time (days)")
@@ -49,17 +51,22 @@ def time_per(fname1, fname2):
     four_animal_models = np.multiply(total_time_one_animal, 4)
     five_animal_models = np.multiply(total_time_one_animal, 5)
     y = total_time_one_animal, two_animal_models, three_animal_models_rounded, four_animal_models, five_animal_models
+    y2 = [total_time_one_animal, total_time_one_animal, total_time_one_animal, total_time_one_animal, total_time_one_animal]
 
-    plt.plot(x, y, marker='o')
-    plt.xticks(np.arange(min(x), max(x)+1, 1.0), ['1/combined', '2', '3', '4', '5'])
+    plt.plot(x, y, marker='.')
+    plt.plot(x,y2)
+    plt.legend(['Single Models', 'Combined Model'])
+    plt.xticks(np.arange(min(x), max(x)+1, 1.0), ['1', '2', '3', '4', '5'])
     
     for i, j in zip(x, y):
-       plt.text(i+.1, j-.2, '({})'.format(j))
+       plt.text(i-.1, j-.9, '{}'.format(j))
 
 
+    plt.grid(color='grey', linestyle='-', linewidth=.1)
+    plt.ylim(0,20)
     plt.title("Model Time (12 training videos)")
-    plt.xlabel("# of animals/models")
-    plt.ylabel("time (days)")
+    plt.xlabel("Num. of rats")
+    plt.ylabel("Analysis time (days)")
     figure = plt.gcf()
     figure.set_size_inches(8, 6)
     plt.savefig(fname2, dpi=100)
