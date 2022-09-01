@@ -6,11 +6,11 @@ import os
 
 def time_per(fname1, fname2):
     w = .9
-    x = [1, 2, 3, 4, 5]
+    x = [1, 2, 3, 4, 5, 6]
     #one_animal_model = np.array([.07, 1, .07, 2.5, 3.6]) #time of steps for single model construction (10 vids)
     #combined_animal_model = np.array([.11, 1, .11, 2.5, 3.72]) #16 vids for combined model
-    one_animal_model = np.array([.08, 1, .08, 2.5, 3.7]) #12 vids for single model 
-    colors = ['blue', 'red', 'green', 'orange', 'purple']
+    one_animal_model = np.array([.08, 1, .08, 2.5, .06, 3.7]) #12 vids for single model 
+    colors = ['fuchsia', 'red', 'green', 'orange', 'purple', 'blue']
     #labeling: 10 min/vid --> 120 min (12 vids) --> 2 hrs --> .08 days
     #initial training: 1440 min = 24 hrs training --> 1 day
     #refine/extract outlier frames: 10 min/vid --> 120 min (12 vids) --> 2 hrs --> .08 days
@@ -23,7 +23,7 @@ def time_per(fname1, fname2):
     plt.bar(x, 
            one_animal_model,
            width=w,
-           tick_label=["labeling", "initial training", "refining/extracting", "final training", "total"],
+           tick_label=["labeling", "initial training", "refining/extracting", "final training", "automated labels", "total"],
            color=colors,
            edgecolor=colors,
            zorder=3
@@ -44,7 +44,7 @@ def time_per(fname1, fname2):
     plt.close()
 
     #Second graph: Time to build 5 models corresponding to 5 animals 
-    total_time_one_animal = one_animal_model[4]
+    total_time_one_animal = one_animal_model[5]
     two_animal_models = np.multiply(total_time_one_animal, 2)
     three_animal_models = np.multiply(total_time_one_animal, 3)
     three_animal_models_rounded = np.round(three_animal_models)
@@ -53,20 +53,43 @@ def time_per(fname1, fname2):
     y = total_time_one_animal, two_animal_models, three_animal_models_rounded, four_animal_models, five_animal_models
     y2 = [total_time_one_animal, total_time_one_animal, total_time_one_animal, total_time_one_animal, total_time_one_animal]
 
-    plt.plot(x, y, marker='.')
-    plt.plot(x,y2)
+    x2 = [1, 2, 3, 4, 5]
+    plt.plot(x2, y, marker='.')
+    plt.plot(x2,y2)
     plt.legend(['Single Models', 'Combined Model'])
-    plt.xticks(np.arange(min(x), max(x)+1, 1.0), ['1', '2', '3', '4', '5'])
+    plt.xticks(np.arange(min(x2), max(x2)+1, 1.0), ['1', '2', '3', '4', '5'])
     
-    for i, j in zip(x, y):
-       plt.text(i-.1, j-.9, '{}'.format(j))
+    for i, j in zip(x2, y):
+       plt.text(i-.1, j-1.2, '{}'.format(j))
 
 
     plt.grid(color='grey', linestyle='-', linewidth=.1)
     plt.ylim(0,20)
     #plt.title("Model Time (12 training videos)")
     plt.xlabel("Num. of rats")
-    plt.ylabel("Analysis time (days)")
+    plt.ylabel("Total Analysis Time (days)")
+    figure = plt.gcf()
+    figure.set_size_inches(8, 6)
+    plt.savefig(fname2, dpi=100)
+    plt.show()
+    plt.close()
+
+
+    x2 = [1, 2, 3, 4, 5]
+    plt.plot(x2, y, marker='.')
+    plt.plot(x2,y2)
+    plt.legend(['Single Models', 'Combined Model'])
+    plt.xticks(np.arange(min(x2), max(x2)+1, 1.0), ['1', '2', '3', '4', '5'])
+    
+    for i, j in zip(x2, y):
+       plt.text(i-.1, j-1.2, '{}'.format(j))
+
+
+    plt.grid(color='grey', linestyle='-', linewidth=.1)
+    plt.ylim(0,20)
+    #plt.title("Model Time (12 training videos)")
+    plt.xlabel("Num. of rats")
+    plt.ylabel("Total Analysis Time (days)")
     figure = plt.gcf()
     figure.set_size_inches(8, 6)
     plt.savefig(fname2, dpi=100)
