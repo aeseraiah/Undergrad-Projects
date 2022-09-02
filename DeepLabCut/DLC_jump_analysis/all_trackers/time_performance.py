@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import os
 
-def time_per(fname1, fname2):
+def time_per(fname1, fname2, fname3):
     w = .9
     x = [1, 2, 3, 4, 5, 6]
     #one_animal_model = np.array([.07, 1, .07, 2.5, 3.6]) #time of steps for single model construction (10 vids)
@@ -40,7 +40,7 @@ def time_per(fname1, fname2):
     figure = plt.gcf()
     figure.set_size_inches(8, 6)
     plt.savefig(fname1, dpi=100)
-    plt.show()
+    #plt.show()
     plt.close()
 
     #Second graph: Time to build 5 models corresponding to 5 animals 
@@ -71,29 +71,32 @@ def time_per(fname1, fname2):
     figure = plt.gcf()
     figure.set_size_inches(8, 6)
     plt.savefig(fname2, dpi=100)
-    plt.show()
+    #plt.show()
     plt.close()
 
 
-    x2 = [1, 2, 3, 4, 5]
-    plt.plot(x2, y, marker='.')
-    plt.plot(x2,y2)
-    plt.legend(['Single Models', 'Combined Model'])
-    plt.xticks(np.arange(min(x2), max(x2)+1, 1.0), ['1', '2', '3', '4', '5'])
+########################
+    y3 = [0,1.14,0] #1.14 pixel difference 
+    y4 = [0,0,0]
+    x3 = [1, 2, 3]
+    plt.plot(x3, y3, marker='.', linewidth=2.5)
+    plt.plot(x3, y4, marker='.', linewidth=2.5)
+    plt.legend(['Jumpy Frame', 'Correct Frame'])
+    plt.xticks(np.arange(min(x3), max(x3)+1, 1.0), ['n-1', 'n', 'n+1'])
     
-    for i, j in zip(x2, y):
-       plt.text(i-.1, j-1.2, '{}'.format(j))
+    #for i, j in zip(x2, y):
+    #   plt.text(i-.1, j-1.2, '{}'.format(j))
 
 
     plt.grid(color='grey', linestyle='-', linewidth=.1)
-    plt.ylim(0,20)
+    plt.ylim(0,2)
     #plt.title("Model Time (12 training videos)")
-    plt.xlabel("Num. of rats")
-    plt.ylabel("Total Analysis Time (days)")
+    plt.xlabel("Frame Number")
+    plt.ylabel("Diff. between frames (pixels)")
     figure = plt.gcf()
     figure.set_size_inches(8, 6)
-    plt.savefig(fname2, dpi=100)
+    plt.savefig(fname3, dpi=100)
     plt.show()
     plt.close()
 
-time_per("time_steps.png", "time_multiple_models.png")
+time_per("time_steps.png", "time_multiple_models.png", "frame_difference.png")
