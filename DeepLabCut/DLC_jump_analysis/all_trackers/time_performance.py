@@ -38,9 +38,9 @@ def time_per(fname1, fname2, fname3):
     os.chdir(current_dir + '/saved_figs')
 
     figure = plt.gcf()
-    figure.set_size_inches(8, 6)
+    figure.set_size_inches(14, 10)
     plt.savefig(fname1, dpi=100)
-    #plt.show()
+    plt.show()
     plt.close()
 
     #Second graph: Time to build 5 models corresponding to 5 animals 
@@ -56,11 +56,11 @@ def time_per(fname1, fname2, fname3):
     x2 = [1, 2, 3, 4, 5]
     plt.plot(x2, y, marker='.')
     plt.plot(x2,y2)
-    plt.legend(['Single Models', 'Combined Model'])
+    plt.legend(['Single Models', 'Combined Model'], loc='upper left')
     plt.xticks(np.arange(min(x2), max(x2)+1, 1.0), ['1', '2', '3', '4', '5'])
     
     for i, j in zip(x2, y):
-       plt.text(i-.1, j-1.2, '{}'.format(j))
+       plt.text(i-.05, j-.7, '{}'.format(j))
 
 
     plt.grid(color='grey', linestyle='-', linewidth=.1)
@@ -69,9 +69,9 @@ def time_per(fname1, fname2, fname3):
     plt.xlabel("Num. of rats")
     plt.ylabel("Total Analysis Time (days)")
     figure = plt.gcf()
-    figure.set_size_inches(8, 6)
+    figure.set_size_inches(14, 10)
     plt.savefig(fname2, dpi=100)
-    #plt.show()
+    plt.show()
     plt.close()
 
 
@@ -80,8 +80,8 @@ def time_per(fname1, fname2, fname3):
     y4 = [0,0,0]
     x3 = [1, 2, 3]
     plt.plot(x3, y3, marker='.', linewidth=2.5)
-    plt.plot(x3, y4, marker='.', linewidth=2.5)
-    plt.legend(['Jumpy Frame', 'Correct Frame'])
+    plt.plot(x3, y4, marker='.', linewidth=3)
+    plt.legend(['Jumpy', 'Correct'])
     plt.xticks(np.arange(min(x3), max(x3)+1, 1.0), ['n-1', 'n', 'n+1'])
     
     #for i, j in zip(x2, y):
@@ -92,9 +92,9 @@ def time_per(fname1, fname2, fname3):
     plt.ylim(0,2)
     #plt.title("Model Time (12 training videos)")
     plt.xlabel("Frame Number")
-    plt.ylabel("Diff. between frames (pixels)")
+    plt.ylabel("Coordinate diff. between frames (pixels)")
     figure = plt.gcf()
-    figure.set_size_inches(8, 6)
+    figure.set_size_inches(10, 8)
     plt.savefig(fname3, dpi=100)
     plt.show()
     plt.close()

@@ -167,7 +167,7 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
   
     plt.ylim(0, 30)
-    plt.title("Animal Model Performance")
+    2plt.title("Animal Model Performance")
     plt.xlabel("Individual Model")
     plt.ylabel("% of Jumps")
     #legend()
