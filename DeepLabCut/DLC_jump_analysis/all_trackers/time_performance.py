@@ -40,7 +40,7 @@ def time_per(fname1, fname2, fname3):
     figure = plt.gcf()
     figure.set_size_inches(14, 10)
     plt.savefig(fname1, dpi=100)
-    plt.show()
+    #plt.show()
     plt.close()
 
     #Second graph: Time to build 5 models corresponding to 5 animals 
@@ -52,6 +52,9 @@ def time_per(fname1, fname2, fname3):
     five_animal_models = np.multiply(total_time_one_animal, 5)
     y = total_time_one_animal, two_animal_models, three_animal_models_rounded, four_animal_models, five_animal_models
     y2 = [total_time_one_animal, total_time_one_animal, total_time_one_animal, total_time_one_animal, total_time_one_animal]
+    #y3 = np.rand(range[0,20]) std 
+    y3 = np.random.uniform(low=10, high=11, size=(0,20))
+    print(y3)
 
     x2 = [1, 2, 3, 4, 5]
     plt.plot(x2, y, marker='.')
@@ -71,30 +74,46 @@ def time_per(fname1, fname2, fname3):
     figure = plt.gcf()
     figure.set_size_inches(14, 10)
     plt.savefig(fname2, dpi=100)
-    plt.show()
+    #plt.show()
     plt.close()
 
 
 ########################
-    y3 = [0,1.14,0] #1.14 pixel difference 
-    y4 = [0,0,0]
-    x3 = [1, 2, 3]
-    plt.plot(x3, y3, marker='.', linewidth=2.5)
-    plt.plot(x3, y4, marker='.', linewidth=3)
-    plt.legend(['Jumpy', 'Correct'])
-    plt.xticks(np.arange(min(x3), max(x3)+1, 1.0), ['1', '2', '3'])
-    
-    #for i, j in zip(x2, y):
-    #   plt.text(i-.1, j-1.2, '{}'.format(j))
+    y3 = np.random.uniform(low=10, high=15, size=(20))
+    y3[10] = 100
+    y3[11] = 100
+    y4 = [0,0,0,0]
+    x3 = np.arange(1,21)
+    x3[10]
+    xx = [10]
+    np.random.seed(0)
+    y5 = np.random.uniform(low=10, high=15, size=(20))
+    y3[0] = y5[0]
+    print(y5)
+    new_y = [87]
 
+    plt.plot(x3, y3, marker='.', linewidth=2.5) #--> jumpy/blue
+    plt.plot(x3, y5, marker='.', linewidth=3)
+    plt.plot(new_y, linestyle='dashed')
+    plt.legend(['Jumpy', 'Correct'])
+    #plt.xticks(np.arange(min(x3), max(x3)+1, 1.0), ['1', '2', '3', '4'])
+    
 
     plt.grid(color='grey', linestyle='-', linewidth=.1)
-    plt.ylim(0,2)
-    #plt.title("Model Time (12 training videos)")
-    plt.xlabel("Frame Number")
-    plt.ylabel("Coordinate diff. between frames (pixels)")
+    plt.ylim(0,120)
+    #plt.xlabel("")
+    
+    # plt.tick_params(
+    # axis='x',          # changes apply to the x-axis
+    # which='both',      # both major and minor ticks are affected
+    # bottom=False,      # ticks along the bottom edge are off
+    # top=False,         # ticks along the top edge are off
+    # labelbottom=False)
+
+
+    plt.ylabel("Abs coordinate diff. between frames (pixels)")
     figure = plt.gcf()
-    figure.set_size_inches(14, 10)
+    figure.set_size_inches(10,6)
     plt.savefig(fname3, dpi=100)
     plt.show()
     plt.close()
