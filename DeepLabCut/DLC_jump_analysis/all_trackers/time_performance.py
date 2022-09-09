@@ -82,7 +82,7 @@ def time_per(fname1, fname2, fname3):
     plt.plot(x3, y3, marker='.', linewidth=2.5)
     plt.plot(x3, y4, marker='.', linewidth=3)
     plt.legend(['Jumpy', 'Correct'])
-    plt.xticks(np.arange(min(x3), max(x3)+1, 1.0), ['n-1', 'n', 'n+1'])
+    plt.xticks(np.arange(min(x3), max(x3)+1, 1.0), ['1', '2', '3'])
     
     #for i, j in zip(x2, y):
     #   plt.text(i-.1, j-1.2, '{}'.format(j))
@@ -94,7 +94,7 @@ def time_per(fname1, fname2, fname3):
     plt.xlabel("Frame Number")
     plt.ylabel("Coordinate diff. between frames (pixels)")
     figure = plt.gcf()
-    figure.set_size_inches(10, 8)
+    figure.set_size_inches(14, 10)
     plt.savefig(fname3, dpi=100)
     plt.show()
     plt.close()

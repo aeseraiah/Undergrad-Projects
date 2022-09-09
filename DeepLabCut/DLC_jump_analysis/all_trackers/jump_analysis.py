@@ -62,9 +62,9 @@ def main(full_path, relative_path, fname1, fname2, fname3):
     y_fig2 = Ms21_values, Ms22_values, RC1_values, Rear5_values
     colors = ['red', 'blue'] #female or male 
 
-    labels_fig1 = ['Single', 'Combined']
+    labels_fig1 = ['Single-match', 'Combined']
     labels_fig2 = ['Rat 1', 'Rat 2', 'Rat 3', 'Rat 4']
-    labels_fig3 = ['Single', 'Combined', 'Ind Avg']
+    labels_fig3 = ['Single-match', 'Combined', 'Single-nonmatch Avg']
 
     plt.rcParams["figure.figsize"] = (13,6)
     figure1 = plt.figure(1)
@@ -105,7 +105,8 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
         ax.legend(["Rat 1: Male, 18-25 months", "Rat 2: Male, 16-20 months", "Rat 3: Female, 10-14 months", "Rat 4: Female, 4-7 months"], bbox_to_anchor=(1.04, 1), borderaxespad=0)
 
-    #legend()
+    figure = plt.gcf()
+    figure.set_size_inches(8,6)
     plt.savefig(fname1, dpi=200)
     plt.show()
     plt.close()
@@ -167,10 +168,11 @@ def main(full_path, relative_path, fname1, fname2, fname3):
 
   
     plt.ylim(0, 30)
-    2plt.title("Animal Model Performance")
+    plt.title("Animal Model Performance")
     plt.xlabel("Individual Model")
     plt.ylabel("% of Jumps")
-    #legend()
+    figure = plt.gcf()
+    figure.set_size_inches(8,6)
     plt.savefig(fname2, dpi=100)
     plt.show()
     plt.close()
@@ -256,12 +258,12 @@ def main(full_path, relative_path, fname1, fname2, fname3):
         plt.scatter(x_fig3[i] + np.array([0.1, 0.4, 0.55, 0.7, 0.9]) * w - w / 2, y[15:20], color=colors[0], marker = "^") #triangle marker = Rear5
 
 
-    plt.grid(color='grey', linestyle='-', linewidth=.1, axis='y', zorder=0)
     plt.ylim(0, 30)
     plt.title("Animal Model Performance")
     plt.xlabel("Model")
     plt.ylabel("% of Jumps")
-    #legend()
+    figure = plt.gcf()
+    figure.set_size_inches(8,6)
     plt.savefig(fname3, dpi=200)
     plt.show()
     plt.close()
