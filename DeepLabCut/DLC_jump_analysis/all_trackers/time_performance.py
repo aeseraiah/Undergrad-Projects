@@ -45,16 +45,33 @@ def time_per(fname1, fname2, fname3):
 
     #Second graph: Time to build 5 models corresponding to 5 animals 
     total_time_one_animal = one_animal_model[5]
+    analysis_time = one_animal_model[4]
     two_animal_models = np.multiply(total_time_one_animal, 2)
     three_animal_models = np.multiply(total_time_one_animal, 3)
     three_animal_models_rounded = np.round(three_animal_models)
     four_animal_models = np.multiply(total_time_one_animal, 4)
     five_animal_models = np.multiply(total_time_one_animal, 5)
+
+    analysis_arr = []
+    for x in range(1,6):
+        analysis_arr.append(analysis_time)
+
+    new_arr = []
+    nn_arr = []
+    for i in analysis_arr:
+        for j in range(1,6):
+                b = i*j
+            nn_arr.append(b)
+        # new_arr.append(i*b)
+        # for j in range(1,6):
+        #     new_arr.append(i*j)
+
+    print(nn_arr)
+
     y = total_time_one_animal, two_animal_models, three_animal_models_rounded, four_animal_models, five_animal_models
+
+
     y2 = [total_time_one_animal, total_time_one_animal, total_time_one_animal, total_time_one_animal, total_time_one_animal]
-    #y3 = np.rand(range[0,20]) std 
-    y3 = np.random.uniform(low=10, high=11, size=(0,20))
-    print(y3)
 
     x2 = [1, 2, 3, 4, 5]
     plt.plot(x2, y, marker='.')
@@ -115,7 +132,7 @@ def time_per(fname1, fname2, fname3):
     figure = plt.gcf()
     figure.set_size_inches(10,6)
     plt.savefig(fname3, dpi=100)
-    plt.show()
+    #plt.show()
     plt.close()
 
 time_per("time_steps.png", "time_multiple_models.png", "frame_difference.png")
