@@ -30,6 +30,7 @@ def time_per(fname1, fname2, fname3):
            )
 
     plt.grid(color='grey', linestyle='-', linewidth=.1, axis='y')
+
     #plt.title("Model Time (12 training videos)")
     plt.xlabel("Steps")
     plt.ylabel("time (days)")
@@ -38,44 +39,52 @@ def time_per(fname1, fname2, fname3):
     os.chdir(current_dir + '/saved_figs')
 
     figure = plt.gcf()
-    figure.set_size_inches(14, 10)
+    figure.set_size_inches(6, 6)
+    plt.ylim(0,4.5)
     plt.savefig(fname1, dpi=100)
     #plt.show()
     plt.close()
 
     #Second graph: Time to build 5 models corresponding to 5 animals 
-    total_time_one_animal = one_animal_model[5]
-    analysis_time = one_animal_model[4]
-    two_animal_models = np.multiply(total_time_one_animal, 2)
-    three_animal_models = np.multiply(total_time_one_animal, 3)
-    three_animal_models_rounded = np.round(three_animal_models)
-    four_animal_models = np.multiply(total_time_one_animal, 4)
-    five_animal_models = np.multiply(total_time_one_animal, 5)
+    total_time_one_animal = np.round((one_animal_model[5] + .06), 2) 
 
-    analysis_arr = []
-    for x in range(1,6):
-        analysis_arr.append(analysis_time)
+    analysis_time = np.round(total_time_one_animal, 2)
+    analysis_time_2 = np.round((total_time_one_animal + one_animal_model[4]), 2)
+    analysis_time_3 = np.round((analysis_time_2 + one_animal_model[4]), 2)
+    analysis_time_4 = np.round((analysis_time_3 + one_animal_model[4]), 2)
+    analysis_time_5 = np.round((analysis_time_4 + one_animal_model[4]), 2)
+    two_animal_models = np.round((total_time_one_animal*2), 2)
+    three_animal_models = np.round((total_time_one_animal*3), 2)
+    four_animal_models = np.round((total_time_one_animal*4), 2)
+    five_animal_models = np.round((total_time_one_animal*5), 2)
 
-    new_arr = []
-    nn_arr = []
-    for i in analysis_arr:
-        for j in range(1,6):
-                b = i*j
-            nn_arr.append(b)
-        # new_arr.append(i*b)
-        # for j in range(1,6):
-        #     new_arr.append(i*j)
+    # analysis_arr = []
+    # for x in range(1,6):
+    #     analysis_arr.append(analysis_time)
 
-    print(nn_arr)
+    # new_arr = []
+    # nn_arr = [1,2,3,4,5]
 
-    y = total_time_one_animal, two_animal_models, three_animal_models_rounded, four_animal_models, five_animal_models
+    # for i in analysis_arr:
+    #     x = np.arange(1,6)
+    #     new_arr.append(i*x[i])
+
+    #     # for j in range(1,6):
+    #     #     new_arr.append(i*j)
+
+    # print(new_arr)
+
+    y = total_time_one_animal, two_animal_models, three_animal_models, four_animal_models, five_animal_models
 
 
     y2 = [total_time_one_animal, total_time_one_animal, total_time_one_animal, total_time_one_animal, total_time_one_animal]
+    new_y = [analysis_time, analysis_time_2, analysis_time_3, analysis_time_4, analysis_time_5]
+    print(new_y)
+    print(y)
 
     x2 = [1, 2, 3, 4, 5]
     plt.plot(x2, y, marker='.')
-    plt.plot(x2,y2)
+    plt.plot(x2,new_y)
     plt.legend(['Single Models', 'Combined Model'], loc='upper left')
     plt.xticks(np.arange(min(x2), max(x2)+1, 1.0), ['1', '2', '3', '4', '5'])
     
@@ -97,42 +106,42 @@ def time_per(fname1, fname2, fname3):
 
 ########################
     y3 = np.random.uniform(low=10, high=15, size=(20))
+    print(y3[9])
+    print(y3[12])
     y3[10] = 100
     y3[11] = 100
     y4 = [0,0,0,0]
     x3 = np.arange(1,21)
-    x3[10]
-    xx = [10]
+    #x3[10]
     np.random.seed(0)
     y5 = np.random.uniform(low=10, high=15, size=(20))
     y3[0] = y5[0]
-    print(y5)
-    new_y = [87]
 
     plt.plot(x3, y3, marker='.', linewidth=2.5) #--> jumpy/blue
     plt.plot(x3, y5, marker='.', linewidth=3)
-    plt.plot(new_y, linestyle='dashed')
     plt.legend(['Jumpy', 'Correct'])
     #plt.xticks(np.arange(min(x3), max(x3)+1, 1.0), ['1', '2', '3', '4'])
     
 
+    plt.axhline(y=87, color='r', linestyle='--')
     plt.grid(color='grey', linestyle='-', linewidth=.1)
     plt.ylim(0,120)
     #plt.xlabel("")
     
-    # plt.tick_params(
-    # axis='x',          # changes apply to the x-axis
-    # which='both',      # both major and minor ticks are affected
-    # bottom=False,      # ticks along the bottom edge are off
-    # top=False,         # ticks along the top edge are off
-    # labelbottom=False)
+    plt.tick_params(
+    axis='x',          # changes apply to the x-axis
+    which='both',      # both major and minor ticks are affected
+    bottom=False,      # ticks along the bottom edge are off
+    top=False,         # ticks along the top edge are off
+    labelbottom=False)
 
 
     plt.ylabel("Abs coordinate diff. between frames (pixels)")
+    plt.xlabel("Frame difference: n - (n-1)")
     figure = plt.gcf()
     figure.set_size_inches(10,6)
     plt.savefig(fname3, dpi=100)
-    #plt.show()
+    plt.show()
     plt.close()
 
 time_per("time_steps.png", "time_multiple_models.png", "frame_difference.png")
