@@ -1,0 +1,18 @@
+git: Version control system
+cmake: Build automation tool
+Boost: Development files for the Boost C++ libraries
+libusb: Development files for the USB library -- https://github.com/libusb/libusb/releases
+vscode or vim
+
+Python Libraries:
+docutils: Documentation utilities for Python 3
+mako: Template library for Python 3
+numpy: Numerical computing library for Python 
+requests: HTTP library for Python 3
+ruamel.yaml: YAML library for Python 3
+setuptools: Packaging library for Python 3
+matplotlib
+tensorflow
+
+UHD:
+https://github.com/EttusResearch/uhd.git
