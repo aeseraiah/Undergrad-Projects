@@ -1,0 +1,16 @@
+UHD for USRPs have a precompiled install for Windows, so a VM or WSL (Windows subsystem for linux) is not useful since I'm not installing from source and compiling 
+
+USRP Driver (UHD) Manual: https://files.ettus.com/manual/page_install.html
+
+1) Download precompiled installer for Windows (UHD software has already been built and packaged): https://files.ettus.com/binaries/uhd/latest_release/4.6.0.0/Windows-10-x64/
+
+2) Download and install Windows UHD USB Drivers: http://files.ettus.com/binaries/misc/erllc_uhd_winusb_driver.zip
+
+3) Install the MSVC Redistributable Package: https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2015-2017-2019-and-2022
+
+The Microsoft Visual C++ Redistributable is a package of runtime components required to run applications developed with Microsoft Visual C++ on a computer that doesn't have Visual C++ installed. These redistributable packages include libraries and components necessary for the execution of applications that are built using Visual C++.
+
+INSTALLING THE PYTHON API: https://files.ettus.com/manual/page_python.html
+1) 
+
+
